@@ -88,5 +88,14 @@
         public DbSet<StockSymbol> StockSymbols { get; set; }
         public DbSet<EodPrice> EodPrices { get; set; }
 
+        /// <summary>
+        /// I dont know if this method should be part of the implemented datacontext or somewhere else
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <param name="entity"></param>
+        public void SetModified<TEntity>(TEntity entity) where TEntity : class
+        {
+            Entry(entity).State = EntityState.Modified;
+        }
     }
 }

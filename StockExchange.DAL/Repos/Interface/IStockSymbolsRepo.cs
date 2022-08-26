@@ -3,15 +3,13 @@
     using StockExchange.DAL.DataModel;
     using StockExchange.DAL.Repos.Base;
 
-    public interface IExchangeRepo : IBaseRepo<Exchange>
+    public interface IStockSymbolsRepo : IBaseRepo<StockSymbol>
     {
         //GET
-        Exchange GetByExchangeID(int id);
-        Exchange GetByName(string name);
-
+        StockSymbol GetByStockSymbolID(int id);
+        StockSymbol GetByName(string name);
         //PUT
         //POST
         //DELETE
-
     }
 }

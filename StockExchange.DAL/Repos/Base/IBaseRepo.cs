@@ -1,8 +1,6 @@
 ﻿namespace StockExchange.DAL.Repos.Base
 {
-    /// <summary>
-    /// Try to implement the implemented class BaseRepo and the interface generic type T
-    /// </summary>
+
     public interface IBaseRepo<T> where T : class
     {
         IQueryable<T> GetAll();

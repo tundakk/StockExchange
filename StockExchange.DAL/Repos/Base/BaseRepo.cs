@@ -9,9 +9,9 @@
     public abstract class BaseRepo<T> : IBaseRepo<T> where T : class, new()
     {
         public readonly DataContext deliveryContext;
-        public BaseRepo()
-        {
-        }
+        //public BaseRepo()
+        //{
+        //}
 
         public BaseRepo(DataContext deliveryContext)
         {
@@ -24,8 +24,13 @@
 
 
         public abstract void Insert(T entity);
-        public abstract void Update(T entity);
+        public virtual void Update(T entity)
+        {
+            if (entity == null)
+                throw new ArgumentException("Update - Entity must not be null");
 
+            deliveryContext.SetModified(entity);
+        }
 
         public void Save()
         {
@@ -39,6 +44,15 @@
                 throw newEx;
             }
         }
+        //public void Include(T entity, params Expression<Func<T, object>>[] joinedEntities)
+        //{
+        //    DbEntityEntry<T> entry = (deliveryContext as DbContext).Entry(entity);
+
+        //    foreach (Expression<Func<T, object>> join in joinedEntities)
+        //    {
+        //        entry.Reference(join).Load();
+        //    }
+        //}
 
     }
 }

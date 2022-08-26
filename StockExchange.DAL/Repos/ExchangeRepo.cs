@@ -11,32 +11,55 @@
         /// I can call deliveryContext because its public in BaseRepo. pretty smart!
         /// </summary>
         /// <param name="deliveryContext"></param>
-        private readonly DataContext deliveryContext;
+        //private readonly DataContext deliveryContext;
 
 
         public ExchangeRepo(DataContext deliveryContext) : base(deliveryContext)
         {
-            this.deliveryContext = deliveryContext;
-        }
-
-        public ExchangeRepo() : base()
-        {
-
         }
 
         public override void Delete(Exchange entity)
         {
-            throw new NotImplementedException();
+            if (entity == null)
+            {
+                throw new ArgumentException("Delete - Exchange must not be null");
+            }
+
+            deliveryContext.Exchanges.Remove(entity);
         }
+        //GET
 
         public override IQueryable<Exchange> GetAll()
         {
             return deliveryContext.Exchanges; //does this return a list of Exhange objects?
         }
 
+        public Exchange GetByExchangeID(int id)
+        {
+            if (id <= 0)
+                throw new ArgumentException("ID must be greater than 0");
+
+            return deliveryContext.Exchanges.Find(id);
+        }
+
+        public Exchange GetByName(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+                throw new ArgumentException("GetByName - name must not be null or empty.");
+
+            return this.GetAll()
+                .FirstOrDefault(s => string.Equals(s.Name.ToLower(), name.ToLower()));  //does it iterate through the string and stops when theres a difference?
+                                                                                        //is it better than .Where?
+        }
+
         public override void Insert(Exchange entity)
         {
-            throw new NotImplementedException();
+            if (entity == null)
+            {
+                throw new ArgumentException("Insert - BlockFragment must not be null");
+            }
+
+            deliveryContext.Exchanges.Add(entity);
         }
 
         public override void Update(Exchange entity)

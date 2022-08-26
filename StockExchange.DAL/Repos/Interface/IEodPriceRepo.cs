@@ -3,15 +3,14 @@
     using StockExchange.DAL.DataModel;
     using StockExchange.DAL.Repos.Base;
 
-    public interface IExchangeRepo : IBaseRepo<Exchange>
+    public interface IEodPriceRepo : IBaseRepo<EodPrice>
     {
         //GET
-        Exchange GetByExchangeID(int id);
-        Exchange GetByName(string name);
+        EodPrice GetByEodPriceID(int id);
+        //get by date EodPrice GetByDate(string date);
 
         //PUT
         //POST
         //DELETE
-
     }
 }

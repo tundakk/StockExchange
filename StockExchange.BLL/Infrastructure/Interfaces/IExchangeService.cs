@@ -6,7 +6,7 @@
     public interface IExchangeService
     {
         //GET
-        List<Exchange> GetAllExchanges();
+        List<StockSymbol> GetAllExchanges();
         //PUT
         //POST
         //Exchange CreateExchange(Exchange exchange);
