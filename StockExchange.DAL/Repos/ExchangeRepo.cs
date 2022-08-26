@@ -5,39 +5,43 @@
     using StockExchange.DAL.Repos.Interface;
     using System.Linq;
 
-    public class ExchangeRepo : BaseRepo<ExchangeRepo>, IExchangeRepo
+    public class ExchangeRepo : BaseRepo<Exchange>, IExchangeRepo
     {
+        /// <summary>
+        /// I can call deliveryContext because its public in BaseRepo. pretty smart!
+        /// </summary>
+        /// <param name="deliveryContext"></param>
         private readonly DataContext deliveryContext;
+
 
         public ExchangeRepo(DataContext deliveryContext) : base(deliveryContext)
         {
             this.deliveryContext = deliveryContext;
         }
 
-        public void Delete(IExchangeRepo entity)
+        public ExchangeRepo() : base()
+        {
+
+        }
+
+        public override void Delete(Exchange entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Insert(IExchangeRepo entity)
+        public override IQueryable<Exchange> GetAll()
+        {
+            return deliveryContext.Exchanges; //does this return a list of Exhange objects?
+        }
+
+        public override void Insert(Exchange entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(IExchangeRepo entity)
+        public override void Update(Exchange entity)
         {
             throw new NotImplementedException();
         }
-
-        IQueryable<IExchangeRepo> IBaseRepo<IExchangeRepo>.GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Returns a list of all Exchange objects in the db
-        /// </summary>
-
-
     }
 }

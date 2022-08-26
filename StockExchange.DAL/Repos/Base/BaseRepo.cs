@@ -1,7 +1,6 @@
 ﻿namespace StockExchange.DAL.Repos.Base
 {
-    using Microsoft.EntityFrameworkCore;
-    using System;
+    using StockExchange.DAL.DataModel;
     using System.Linq;
 
     /// <summary>
@@ -9,36 +8,37 @@
     /// </summary>
     public abstract class BaseRepo<T> : IBaseRepo<T> where T : class, new()
     {
-        public readonly DbContext deliveryContext;
+        public readonly DataContext deliveryContext;
+        public BaseRepo()
+        {
+        }
 
-        public BaseRepo(DbContext deliveryContext)
+        public BaseRepo(DataContext deliveryContext)
         {
             this.deliveryContext = deliveryContext;
         }
 
-        public void Delete(T entity)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract void Delete(T entity);
 
-        public IQueryable<T> GetAll()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract IQueryable<T> GetAll();
 
-        public void Insert(T entity)
-        {
-            throw new NotImplementedException();
-        }
+
+        public abstract void Insert(T entity);
+        public abstract void Update(T entity);
+
 
         public void Save()
         {
-            throw new NotImplementedException();
+            try
+            {
+                this.deliveryContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                var newEx = new Exception($"DAL Save - Could not be completed: {ex.Message}.", ex);
+                throw newEx;
+            }
         }
 
-        public void Update(T entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

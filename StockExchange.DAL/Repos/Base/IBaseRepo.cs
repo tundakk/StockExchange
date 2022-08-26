@@ -1,6 +1,5 @@
 ﻿namespace StockExchange.DAL.Repos.Base
 {
-
     /// <summary>
     /// Try to implement the implemented class BaseRepo and the interface generic type T
     /// </summary>
@@ -11,10 +10,12 @@
         void Update(T entity);
         void Delete(T entity);
         void Save();
-        //void GetAll();
-        //void Insert();
-        //void Update();
-        //void Delete();
-        //void Save();
+
+        //Explicit Load support
+
+        //void Include(T entity, params Expression<Func<T, object>>[] joinedEntities);
+        //void IncludeCollection(T entity, params Expression<Func<T, ICollection<object>>>[] joinedEntities);
+        //IQueryable<T2> GetIncludeQuery<T2>(T entity, Expression<Func<T, T2>> join) where T2 : class;
+        //IQueryable<T2> GetIncludeCollectionQuery<T2>(T entity, Expression<Func<T, ICollection<T2>>> join) where T2 : class;
     }
 }
