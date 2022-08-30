@@ -35,9 +35,11 @@
             return this.GetAll().FirstOrDefault(s => string.Equals(s.CompanyName.ToLower(), name.ToLower()));  //does it iterate through the string and stops when theres a difference?
                                                                                                                //is it better than .Where?
                                                                                                                //is ToLower a good addition or should it be BL?
+                                                                                                               //return this.GetAll().FirstOrDefault(s => s.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+                                                                                                               //.Where(p => p.Name.ToLower().Contains(name.ToLower()))
         }
 
-        public StockSymbol GetByStockSymbolID(int id)
+        public StockSymbol GetById(int id)
         {
             if (id <= 0)
                 throw new ArgumentException("ID must be greater than 0");
@@ -55,14 +57,5 @@
             deliveryContext.StockSymbols.Add(entity);
         }
 
-        public override void Update(StockSymbol entity)
-        {
-            if (entity != null)
-            {
-                //entity.IsDeleted = true;
-                deliveryContext.Update(entity);
-                this.Save();
-            }
-        }
     }
 }

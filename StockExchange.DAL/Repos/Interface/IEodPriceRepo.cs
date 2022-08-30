@@ -6,7 +6,7 @@
     public interface IEodPriceRepo : IBaseRepo<EodPrice>
     {
         //GET
-        EodPrice GetByEodPriceID(int id);
+        EodPrice GetById(int id);
         //get by date EodPrice GetByDate(string date);
 
         //PUT

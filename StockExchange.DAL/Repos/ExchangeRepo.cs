@@ -34,7 +34,7 @@
             return deliveryContext.Exchanges; //does this return a list of Exhange objects?
         }
 
-        public Exchange GetByExchangeID(int id)
+        public Exchange GetById(int id)
         {
             if (id <= 0)
                 throw new ArgumentException("ID must be greater than 0");
@@ -62,9 +62,5 @@
             deliveryContext.Exchanges.Add(entity);
         }
 
-        public override void Update(Exchange entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -28,7 +28,7 @@
             return deliveryContext.EodPrices;
         }
 
-        public EodPrice GetByEodPriceID(int id)
+        public EodPrice GetById(int id)
         {
             if (id <= 0)
                 throw new ArgumentException("ID must be greater than 0");
@@ -46,9 +46,5 @@
             deliveryContext.EodPrices.Add(entity);
         }
 
-        public override void Update(EodPrice entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

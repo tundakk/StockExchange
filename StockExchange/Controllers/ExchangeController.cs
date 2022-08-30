@@ -2,6 +2,8 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using StockExchange.BLL.Infrastructure.Interfaces;
+    using StockExchange.DAL.DataModel;
+    using StockExchange.Domain.Model.Responses;
 
     [Route("api/[controller]")]
     [ApiController]
@@ -17,6 +19,13 @@
         {
             var response = exchangeService.GetAllExchanges();
             return Ok(response);
+        }
+        [HttpGet("Search for exchange by name")]
+        public ActionResult<ServiceResponse<Exchange>> GetExchangeByName(string name)
+        {
+            var result = exchangeService.GetByName(name);
+
+            return Ok(result);
         }
         //[HttpPut("Create an Exchange")]
         //public ActionResult CreateExchange(Exchange exchange)

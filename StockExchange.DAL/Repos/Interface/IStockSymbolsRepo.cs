@@ -6,7 +6,7 @@
     public interface IStockSymbolsRepo : IBaseRepo<StockSymbol>
     {
         //GET
-        StockSymbol GetByStockSymbolID(int id);
+        StockSymbol GetById(int id);
         StockSymbol GetByName(string name);
         //PUT
         //POST

@@ -6,7 +6,7 @@
     public interface IExchangeRepo : IBaseRepo<Exchange>
     {
         //GET
-        Exchange GetByExchangeID(int id);
+        Exchange GetById(int id);
         Exchange GetByName(string name);
 
         //PUT
