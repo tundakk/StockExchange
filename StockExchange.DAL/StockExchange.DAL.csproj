@@ -24,4 +24,8 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\StockExchange.Domain.Model\StockExchange.Domain.Model.csproj" />
+  </ItemGroup>
+
 </Project>

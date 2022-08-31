@@ -83,10 +83,12 @@
             );
 
         }
-
-        public DbSet<Exchange> Exchanges { get; set; }
-        public DbSet<StockSymbol> StockSymbols { get; set; }
-        public DbSet<EodPrice> EodPrices { get; set; }
+        /// <summary>
+        /// Im using lampda Set<> to remove possible null value for the ctor
+        /// </summary>
+        public DbSet<Exchange> Exchanges => Set<Exchange>();
+        public DbSet<StockSymbol> StockSymbols => Set<StockSymbol>();
+        public DbSet<EodPrice> EodPrices => Set<EodPrice>();
 
         /// <summary>
         /// I dont know if this method should be part of the implemented datacontext or somewhere else

@@ -1,19 +1,22 @@
 ﻿namespace StockExchange.BLL.Infrastructure.Interfaces
 {
-    using StockExchange.DAL.DataModel;
+    using StockExchange.Domain.Model;
     using StockExchange.Domain.Model.Responses;
     using System.Collections.Generic;
 
     public interface IExchangeService
     {
         //GET
-        ServiceResponse<Exchange> GetByName(string name);
-        List<Exchange> GetAllExchanges();
-        Exchange GetById(int id);
+        ServiceResponse<ExchangeModel> GetByName(string name);
+        List<ExchangeModel> GetAllExchanges();
+        ExchangeModel GetById(int id);
         //PUT
+        void UpdateExchange(ExchangeModel exchangeModel);
+
         //POST
-        //Exchange CreateExchange(Exchange exchange);
+        public void InsertExchange(ExchangeModel exchangeModel);
+
         //DELETE
-        bool Delete(int id);
+        bool DeleteById(int id);
     }
 }

@@ -2,7 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using StockExchange.BLL.Infrastructure.Interfaces;
-    using StockExchange.DAL.DataModel;
+    using StockExchange.Domain.Model;
     using StockExchange.Domain.Model.Responses;
 
     [Route("api/[controller]")]
@@ -15,23 +15,31 @@
             this.exchangeService = exchangeService;
         }
         [HttpGet("GetAllExchanges")]
-        public ActionResult ListAllExchanges()
+        public ActionResult<List<ExchangeModel>> ListAllExchanges()
         {
             var response = exchangeService.GetAllExchanges();
             return Ok(response);
         }
         [HttpGet("Search for exchange by name")]
-        public ActionResult<ServiceResponse<Exchange>> GetExchangeByName(string name)
+        public ActionResult<ServiceResponse<ExchangeModel>> GetExchangeByName(string name)
         {
             var result = exchangeService.GetByName(name);
 
             return Ok(result);
         }
-        //[HttpPut("Create an Exchange")]
-        //public ActionResult CreateExchange(Exchange exchange)
-        //{
-        //    var response = exchangeService
-        //}
+        [HttpGet("Get exchange ID")]
+        public ActionResult<ExchangeModel> GetById(int id)
+        {
+            var result = exchangeService.GetById(id);
 
+            return Ok(result);
+        }
+        //[HttpGet("Get exchange by ID")]
+        //public ActionResult<ExchangeModel>
+        [HttpDelete("Delete exchange")]
+        public void DeleteExchangeById(int id)
+        {
+            exchangeService.DeleteById(id);
+        }
     }
 }

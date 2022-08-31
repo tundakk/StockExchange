@@ -1,12 +1,20 @@
 ﻿namespace StockExchange.BLL.Infrastructure.Interfaces
 {
-    using StockExchange.DAL.DataModel;
+    using StockExchange.Domain.Model;
     using StockExchange.Domain.Model.Responses;
 
     public interface IStockSymbolService
     {
-        StockSymbol GetById(int id);
-        ServiceResponse<StockSymbol> GetByName(string name);
+        //GET
+        List<StockSymbolModel> GetAllStockSymbols();
+        StockSymbolModel GetById(int id);
+        ServiceResponse<StockSymbolModel> GetByName(string name);
+        //PUT
+        void UpdateStockSymbol(StockSymbolModel stockSymbolModel);
+        // POST
+        public void InsertStockSymbol(StockSymbolModel stockSymbolModel);
+        // DELETE
+        bool DeleteById(int id);
 
     }
 }

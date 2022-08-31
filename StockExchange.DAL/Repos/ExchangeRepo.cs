@@ -18,15 +18,7 @@
         {
         }
 
-        public override void Delete(Exchange entity)
-        {
-            if (entity == null)
-            {
-                throw new ArgumentException("Delete - Exchange must not be null");
-            }
 
-            deliveryContext.Exchanges.Remove(entity);
-        }
         //GET
 
         public override IQueryable<Exchange> GetAll()
@@ -61,6 +53,15 @@
 
             deliveryContext.Exchanges.Add(entity);
         }
+        // DELETE
+        public override void Delete(Exchange entity)
+        {
+            if (entity == null)
+            {
+                throw new ArgumentException("Delete - Exchange must not be null");
+            }
 
+            deliveryContext.Exchanges.Remove(entity);
+        }
     }
 }

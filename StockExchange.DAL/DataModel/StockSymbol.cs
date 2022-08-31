@@ -20,7 +20,7 @@
         public int ExchangeId { get; set; } //foreign key
         //[Required]
         [JsonIgnore]
-        public virtual Exchange? Exchange { get; set; }
+        public virtual Exchange? Exchanges { get; set; }
         public ICollection<EodPrice> EodPrices { get; set; } = new List<EodPrice>(); //1:n //should it be new list? or nullable?
 
 

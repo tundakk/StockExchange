@@ -1,5 +1,6 @@
 ﻿namespace StockExchange.BLL.Infrastructure.Services
 {
+    using StockExchange.BLL.Conversions;
     using StockExchange.BLL.Infrastructure.Interfaces;
     using StockExchange.DAL.DataModel;
     using StockExchange.DAL.Repos.Interface;
@@ -12,7 +13,31 @@
         {
             this.eodPriceRepo = eodPriceRepo;
         }
-        public bool Delete(int id)
+
+        public EodPriceModel GetById(int id)
+        {
+            EodPrice EodPrice = eodPriceRepo.GetById(id);
+
+            EodPriceModel responseModel = EodPriceConvert.DalToDomainEodPrice(EodPrice);
+
+            return responseModel;
+        }
+        // POST
+        public void InsertEodPrice(EodPriceModel eodPriceModel) //should this return a bool?
+        {
+            EodPrice eodPrice = EodPriceConvert.DomainToDalEodPrice(eodPriceModel);
+
+            eodPriceRepo.Insert(eodPrice);
+        }
+        // UPDATE
+        public void UpdateEodPrice(EodPriceModel eodPriceModel)
+        {
+            EodPrice eodPrice = EodPriceConvert.DomainToDalEodPrice(eodPriceModel);
+
+            eodPriceRepo.Update(eodPrice);
+        }
+        // DELETE
+        public bool DeleteById(int id)
         {
             EodPrice eodPrice = eodPriceRepo.GetById(id);
             if (eodPrice == null)
@@ -22,25 +47,6 @@
             eodPriceRepo.Delete(eodPrice);
             eodPriceRepo.Save();
             return true;
-        }
-        /// <summary>
-        /// this does not feel smart. i should make the covnersion elsewhere in a generic method i can call.
-        /// It also feels redundant to write it every conversion, especially when i have models in domain model.
-        /// I dictate manually which properties that is passed, so why use DTO's?
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>        
-        public EodPriceModel GetById(int id)
-        {
-            EodPrice EodPrice = eodPriceRepo.GetById(id);
-            EodPriceModel responseModel = new EodPriceModel()
-            {
-                ID = EodPrice.ID,
-                Date = EodPrice.Date,
-                ClosePrice = EodPrice.ClosePrice,
-                StockSymbolId = EodPrice.StockSymbolId
-            };
-            return responseModel;
         }
     }
 }

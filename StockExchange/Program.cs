@@ -16,8 +16,9 @@ namespace StockExchange
             // Add services to the container.
             ///DbContext is injected here. References appsettings.json
             ///
+            //options.UseSqlite($"Data Source=../Database/StockExchangeDb"
             builder.Services.AddDbContext<DataContext>(options =>
-            options.UseSqlite($"Data Source=../Database/StockExchangeDb"
+            options.UseSqlite(builder.Configuration.GetConnectionString("StockExchangeDb")
             ));
 
             builder.Services.AddControllers();
