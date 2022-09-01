@@ -41,6 +41,7 @@
             if (entity == null)
             {
                 throw new ArgumentException("Insert - BlockFragment must not be null");
+
             }
 
             deliveryContext.EodPrices.Add(entity);

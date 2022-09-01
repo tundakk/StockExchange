@@ -29,6 +29,8 @@
             EodPrice eodPrice = EodPriceConvert.DomainToDalEodPrice(eodPriceModel);
 
             eodPriceRepo.Insert(eodPrice);
+            eodPriceRepo.Save();
+
         }
         // UPDATE
         public void UpdateEodPrice(EodPriceModel eodPriceModel)

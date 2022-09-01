@@ -1,5 +1,6 @@
 ﻿namespace StockExchange.DAL.Repos
 {
+    using Microsoft.EntityFrameworkCore;
     using StockExchange.DAL.DataModel;
     using StockExchange.DAL.Repos.Base;
     using StockExchange.DAL.Repos.Interface;
@@ -49,7 +50,13 @@
 
         public List<StockSymbol> GetListOfStockByExchangeId(int exchangeId)
         {
-            return GetAll().Where(s => s.ExchangeId == exchangeId).ToList();
+            var response = new List<StockSymbol>();
+
+            response = GetAll().Where(s => s.ExchangeId == exchangeId)
+               .Include(e => e.EodPrices)
+               .Include(sv => sv.Exchange)
+               .ToList();
+            return response;
         }
 
         public override void Insert(StockSymbol entity)

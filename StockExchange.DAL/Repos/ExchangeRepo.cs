@@ -18,7 +18,6 @@
         {
         }
 
-
         //GET
 
         public override IQueryable<Exchange> GetAll()

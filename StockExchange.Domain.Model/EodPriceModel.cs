@@ -1,6 +1,7 @@
 ﻿namespace StockExchange.Domain.Model
 {
     using System;
+    using System.Text.Json.Serialization;
 
     public class EodPriceModel
     {
@@ -8,6 +9,8 @@
         public DateTime Date { get; set; }
         public float ClosePrice { get; set; }
         public int StockSymbolId { get; set; }
+        [JsonIgnore]
+
         public StockSymbolModel? stockSymbolModel { get; set; } // n-1
 
     }

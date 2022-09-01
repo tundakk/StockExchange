@@ -27,7 +27,7 @@
 
             return Ok(result);
         }
-        [HttpGet("Get exchange ID")]
+        [HttpGet("Get exchange by ID")]
         public ActionResult<ExchangeModel> GetExchangeById(int id)
         {
             var result = exchangeService.GetExchangeById(id);
