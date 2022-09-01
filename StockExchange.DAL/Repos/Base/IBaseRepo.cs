@@ -1,6 +1,5 @@
 ﻿namespace StockExchange.DAL.Repos.Base
 {
-
     public interface IBaseRepo<T> where T : class
     {
         IQueryable<T> GetAll();

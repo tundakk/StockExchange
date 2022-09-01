@@ -19,6 +19,7 @@
                 Ticker = stockSymbol.Ticker,
                 IsActive = stockSymbol.IsActive,
                 ExchangeId = stockSymbol.ExchangeId,
+                Exchange = ExchangeConvert.DalToDomainExchange(stockSymbol.Exchange),
                 EodPrices = EodPriceConvert.DalToDomainListOfEod(stockSymbol.EodPrices.ToList()),
             };
             return responseModel;

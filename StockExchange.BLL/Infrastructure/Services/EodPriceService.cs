@@ -5,6 +5,7 @@
     using StockExchange.DAL.DataModel;
     using StockExchange.DAL.Repos.Interface;
     using StockExchange.Domain.Model;
+    using System.Collections.Generic;
 
     public class EodPriceService : IEodPriceService
     {
@@ -35,6 +36,7 @@
             EodPrice eodPrice = EodPriceConvert.DomainToDalEodPrice(eodPriceModel);
 
             eodPriceRepo.Update(eodPrice);
+            eodPriceRepo.Save();
         }
         // DELETE
         public bool DeleteById(int id)
@@ -48,5 +50,34 @@
             eodPriceRepo.Save();
             return true;
         }
+
+        public List<EodPriceModel> GetAllEodPrices()
+        {
+            List<EodPrice> eodPrice = eodPriceRepo.GetAll().ToList();
+
+            //conversion from DAL model to DOMAIN model
+            ICollection<EodPriceModel> responseModel = EodPriceConvert.DalToDomainListOfEod(eodPrice);
+
+            return responseModel.ToList();
+        }
+
+        //public ServiceResponse<EodPriceModel> GetEodByDate(DateTime date)
+        //{
+        //    EodPrice eodPrice = eodPriceRepo.GetByDate(date);
+        //    ServiceResponse<EodPriceModel> responseModel = new ServiceResponse<EodPriceModel>();
+
+        //    if (eodPrice == null)//should i check on DAL model or domain model?
+        //    {
+        //        return new ServiceResponse<EodPriceModel>()
+        //        {
+        //            Success = false,
+        //            Message = "An Exchange with that name wasn't found"
+        //        };
+        //    }
+        //    return new ServiceResponse<EodPriceModel>()
+        //    {
+        //        Data = EodPriceConvert.DalToDomainEodPrice(eodPrice)
+        //    };
+        //}
     }
 }

@@ -43,21 +43,21 @@ namespace StockExchange.DAL.Migrations
                         {
                             ID = 1,
                             ClosePrice = 10.14f,
-                            Date = new DateTime(2022, 8, 25, 10, 32, 50, 527, DateTimeKind.Local).AddTicks(6547),
+                            Date = new DateTime(2022, 9, 1, 10, 19, 56, 270, DateTimeKind.Local).AddTicks(1238),
                             StockSymbolId = 1
                         },
                         new
                         {
                             ID = 2,
                             ClosePrice = 20.14f,
-                            Date = new DateTime(2022, 8, 25, 10, 32, 50, 527, DateTimeKind.Local).AddTicks(6583),
+                            Date = new DateTime(2022, 9, 1, 10, 19, 56, 270, DateTimeKind.Local).AddTicks(1245),
                             StockSymbolId = 2
                         },
                         new
                         {
                             ID = 3,
                             ClosePrice = 30.14f,
-                            Date = new DateTime(2022, 8, 25, 10, 32, 50, 527, DateTimeKind.Local).AddTicks(6586),
+                            Date = new DateTime(2022, 9, 1, 10, 19, 56, 270, DateTimeKind.Local).AddTicks(1251),
                             StockSymbolId = 3
                         });
                 });
@@ -132,7 +132,7 @@ namespace StockExchange.DAL.Migrations
                             CompanyName = "Straton Oakmount",
                             ExchangeId = 1,
                             IsActive = false,
-                            Ticker = new DateTime(2022, 8, 25, 10, 32, 50, 527, DateTimeKind.Local).AddTicks(6520)
+                            Ticker = new DateTime(2022, 9, 1, 10, 19, 56, 270, DateTimeKind.Local).AddTicks(1181)
                         },
                         new
                         {
@@ -140,7 +140,7 @@ namespace StockExchange.DAL.Migrations
                             CompanyName = "Apple",
                             ExchangeId = 2,
                             IsActive = true,
-                            Ticker = new DateTime(2022, 8, 25, 10, 32, 50, 527, DateTimeKind.Local).AddTicks(6525)
+                            Ticker = new DateTime(2022, 9, 1, 10, 19, 56, 270, DateTimeKind.Local).AddTicks(1190)
                         },
                         new
                         {
@@ -148,17 +148,19 @@ namespace StockExchange.DAL.Migrations
                             CompanyName = "Alphabet",
                             ExchangeId = 3,
                             IsActive = true,
-                            Ticker = new DateTime(2022, 8, 25, 10, 32, 50, 527, DateTimeKind.Local).AddTicks(6529)
+                            Ticker = new DateTime(2022, 9, 1, 10, 19, 56, 270, DateTimeKind.Local).AddTicks(1197)
                         });
                 });
 
             modelBuilder.Entity("StockExchange.DAL.DataModel.EodPrice", b =>
                 {
-                    b.HasOne("StockExchange.DAL.DataModel.StockSymbol", null)
+                    b.HasOne("StockExchange.DAL.DataModel.StockSymbol", "stockSymbol")
                         .WithMany("EodPrices")
                         .HasForeignKey("StockSymbolId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("stockSymbol");
                 });
 
             modelBuilder.Entity("StockExchange.DAL.DataModel.StockSymbol", b =>

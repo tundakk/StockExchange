@@ -12,7 +12,7 @@
         [Required]
         public bool IsActive { get; set; } = false;
 
-        public ICollection<StockSymbol> StockSymbols { get; set; } = new List<StockSymbol>(); //1:n //should it be new list? or nullable?
+        public ICollection<StockSymbol> StockSymbols { get; set; } = null!; //1:n //should it be new list? or nullable?
 
     }
 }

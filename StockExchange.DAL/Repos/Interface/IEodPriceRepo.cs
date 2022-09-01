@@ -7,6 +7,8 @@
     {
         //GET
         EodPrice GetById(int id);
+        //EodPrice GetByDate(DateTime date);
+
         //get by date EodPrice GetByDate(string date);
 
         //PUT

@@ -34,7 +34,8 @@
                 ID = eodPrice.ID,
                 Date = eodPrice.Date,
                 ClosePrice = eodPrice.ClosePrice,
-                StockSymbolId = eodPrice.StockSymbolId
+                StockSymbolId = eodPrice.StockSymbolId,
+                stockSymbolModel = StockSymbolConvert.DalToDomainStockSymbol(eodPrice.stockSymbol)
             };
             return responseModel;
         }
@@ -45,7 +46,9 @@
                 ID = eodPriceModel.ID,
                 Date = eodPriceModel.Date,
                 ClosePrice = eodPriceModel.ClosePrice,
-                StockSymbolId = eodPriceModel.StockSymbolId
+                StockSymbolId = eodPriceModel.StockSymbolId,
+                stockSymbol = StockSymbolConvert.DomainToDalStockSymbol(eodPriceModel.stockSymbolModel)
+
             };
             return response;
         }

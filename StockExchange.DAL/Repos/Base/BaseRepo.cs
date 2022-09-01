@@ -3,15 +3,10 @@
     using StockExchange.DAL.DataModel;
     using System.Linq;
 
-    /// <summary>
-    /// OBS. THIS MODEL IS NOT IN USE
-    /// </summary>
     public abstract class BaseRepo<T> : IBaseRepo<T> where T : class, new()
     {
         public readonly DataContext deliveryContext;
-        //public BaseRepo()
-        //{
-        //}
+
 
         public BaseRepo(DataContext deliveryContext)
         {
@@ -46,7 +41,7 @@
         }
         //public void Include(T entity, params Expression<Func<T, object>>[] joinedEntities)
         //{
-        //    DbEntityEntry<T> entry = (deliveryContext as DbContext).Entry(entity);
+        //    DbEntityEntry<T> entry = (deliveryContext as DataContext).Entry(entity);
 
         //    foreach (Expression<Func<T, object>> join in joinedEntities)
         //    {

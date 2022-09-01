@@ -11,7 +11,8 @@
         public int ExchangeId { get; set; } //foreign key
 
         //[JsonIgnore]
-        public virtual ExchangeModel? Exchanges { get; set; }
-        public ICollection<EodPriceModel> EodPrices { get; set; } = new List<EodPriceModel>(); //1:n //should it be new list? or nullable?
+        public ExchangeModel? Exchange { get; set; } //1-1
+        public virtual ICollection<EodPriceModel> EodPrices { get; set; } = null!; //1:n //should it be new list? or nullable?
     }
 }
+

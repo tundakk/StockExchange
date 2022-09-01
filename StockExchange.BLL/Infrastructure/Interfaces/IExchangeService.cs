@@ -9,7 +9,7 @@
         //GET
         ServiceResponse<ExchangeModel> GetByName(string name);
         List<ExchangeModel> GetAllExchanges();
-        ExchangeModel GetById(int id);
+        ExchangeModel GetExchangeById(int id);
         //PUT
         void UpdateExchange(ExchangeModel exchangeModel);
 

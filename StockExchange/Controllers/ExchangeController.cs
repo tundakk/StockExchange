@@ -28,18 +28,27 @@
             return Ok(result);
         }
         [HttpGet("Get exchange ID")]
-        public ActionResult<ExchangeModel> GetById(int id)
+        public ActionResult<ExchangeModel> GetExchangeById(int id)
         {
-            var result = exchangeService.GetById(id);
+            var result = exchangeService.GetExchangeById(id);
 
             return Ok(result);
         }
-        //[HttpGet("Get exchange by ID")]
-        //public ActionResult<ExchangeModel>
         [HttpDelete("Delete exchange")]
         public void DeleteExchangeById(int id)
         {
             exchangeService.DeleteById(id);
         }
+        [HttpPut("Update an exchange")]
+        public void UpdateExchange(ExchangeModel exchangeModel)
+        {
+            exchangeService.UpdateExchange(exchangeModel);
+        }
+        [HttpPost("Create an exchange")]
+        public void CreateExchange(ExchangeModel exchangeModel)
+        {
+            exchangeService.InsertExchange(exchangeModel);
+        }
+
     }
 }

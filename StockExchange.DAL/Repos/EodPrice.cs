@@ -45,6 +45,13 @@
 
             deliveryContext.EodPrices.Add(entity);
         }
+        //public EodPrice GetByDate(DateTime date)
+        //{
+        //    if (string.IsNullOrEmpty(date))
+        //        throw new ArgumentException("GetByName - name must not be null or empty.");
+
+        //    return this.GetAll().Where(s => DateTime.Equals(s.Date.Date, date));                                                                                      
+        //}
 
     }
 }

@@ -44,6 +44,7 @@
                                                                                         //is it better than .Where?
         }
 
+        // POST
         public override void Insert(Exchange entity)
         {
             if (entity == null)
@@ -63,5 +64,7 @@
 
             deliveryContext.Exchanges.Remove(entity);
         }
+
+
     }
 }

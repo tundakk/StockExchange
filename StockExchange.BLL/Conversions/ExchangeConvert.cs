@@ -7,13 +7,21 @@
     {
         public static ExchangeModel DalToDomainExchange(Exchange exchange)
         {
-            ExchangeModel responseModel = new ExchangeModel()
-            {
-                ID = exchange.ID,
-                Name = exchange.Name,
-                IsActive = exchange.IsActive,
-                StockSymbols = StockSymbolConvert.DalToDomainListOfStock(exchange.StockSymbols.ToList()),
-            };
+            ExchangeModel responseModel = new ExchangeModel();
+
+            //if (exchange != null)
+            //{ responseModel(
+            //    {
+            //        ID = exchange.ID,
+            //        Name = exchange.Name,
+            //        IsActive = exchange.IsActive,
+            //        StockSymbols = StockSymbolConvert.DalToDomainListOfStock(exchange.StockSymbols.ToList()),
+            //    };
+            //}
+            //else
+            //    ExchangeModel responseModel = new ExchangeModel();
+
+
             return responseModel;
         }
         public static ICollection<ExchangeModel> DalToDomainListOfExchanges(List<Exchange> exchange)

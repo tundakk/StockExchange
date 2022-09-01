@@ -36,10 +36,27 @@
 
             return Ok(result);
         }
+        [HttpGet("Get stocksymbols by exchange ID")]
+        public ActionResult<List<StockSymbolModel>> GetStockByExchangeId(int exchangeId)
+        {
+            var result = stockSymbolService.GetStockByExchangeId(exchangeId);
+            return Ok(result);
+        }
         [HttpPut("Update stocksymbol")]
         public void UpdateStockSymbol(StockSymbolModel stockSymbolModel)
         {
             stockSymbolService.UpdateStockSymbol(stockSymbolModel);
+        }
+        [HttpDelete("Delete stocksymbol")]
+        public void DeleteStockSymbolById(int id)
+        {
+            stockSymbolService.DeleteById(id);
+        }
+        [HttpPost("Create a stocksymbol")]
+        public void CreateExchange(StockSymbolModel stockSymbolModel)
+        {
+            stockSymbolService.InsertStockSymbol(stockSymbolModel);
+
         }
     }
 }

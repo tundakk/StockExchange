@@ -45,15 +45,12 @@
         }
         public List<StockSymbolModel> GetAllStockSymbols()
         {
-
             List<StockSymbol> stockSymbol = stockSymbolsRepo.GetAll().ToList();
 
             //conversion from DAL model to DOMAIN model
             ICollection<StockSymbolModel> responseModel = StockSymbolConvert.DalToDomainListOfStock(stockSymbol);
 
-            return responseModel.ToList(); // ICollection and lists. im doing something wrong  ithink
-
-
+            return responseModel.ToList(); // ICollection and lists. im doing something wrong i think
         }
         // POST
         public void InsertStockSymbol(StockSymbolModel stockSymbolModel) //should this return a bool?
@@ -61,6 +58,7 @@
             StockSymbol stockSymbol = StockSymbolConvert.DomainToDalStockSymbol(stockSymbolModel);
 
             stockSymbolsRepo.Insert(stockSymbol);
+            stockSymbolsRepo.Save();
         }
         // UPDATE
         public void UpdateStockSymbol(StockSymbolModel stockSymbolModel)
@@ -68,6 +66,7 @@
             StockSymbol stockSymbol = StockSymbolConvert.DomainToDalStockSymbol(stockSymbolModel);
 
             stockSymbolsRepo.Update(stockSymbol);
+            stockSymbolsRepo.Save();
         }
         // DELETE
         public bool DeleteById(int id)
@@ -81,6 +80,11 @@
             return true;
         }
 
-
+        public List<StockSymbolModel> GetStockByExchangeId(int exchangeId)
+        {
+            List<StockSymbol> stockDal = stockSymbolsRepo.GetListOfStockByExchangeId(exchangeId);
+            //return - convert to domain
+            return StockSymbolConvert.DalToDomainListOfStock(stockDal).ToList();
+        }
     }
 }

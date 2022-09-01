@@ -26,7 +26,7 @@
             return responseModel.ToList(); // ICollection and lists. im doing something wrong  ithink
         }
 
-        public ExchangeModel GetById(int id)
+        public ExchangeModel GetExchangeById(int id)
         {
             Exchange response = exchangeRepo.GetById(id);
 
@@ -61,6 +61,7 @@
             Exchange exchange = ExchangeConvert.DomainToDalExchange(exchangeModel);
 
             exchangeRepo.Insert(exchange);
+            exchangeRepo.Save();
         }
         // UPDATE
         public void UpdateExchange(ExchangeModel exchangeModel)
@@ -68,6 +69,7 @@
             Exchange exchange = ExchangeConvert.DomainToDalExchange(exchangeModel);
 
             exchangeRepo.Update(exchange);
+            exchangeRepo.Save();
         }
         // DELETE
         public bool DeleteById(int id)
@@ -83,7 +85,5 @@
             exchangeRepo.Save();
             return true;
         }
-
-
     }
 }

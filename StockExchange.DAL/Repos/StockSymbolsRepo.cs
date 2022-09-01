@@ -47,6 +47,11 @@
             return deliveryContext.StockSymbols.Find(id);
         }
 
+        public List<StockSymbol> GetListOfStockByExchangeId(int exchangeId)
+        {
+            return GetAll().Where(s => s.ExchangeId == exchangeId).ToList();
+        }
+
         public override void Insert(StockSymbol entity)
         {
             if (entity == null)

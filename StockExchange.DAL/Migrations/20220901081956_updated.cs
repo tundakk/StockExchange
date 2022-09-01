@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace StockExchange.DAL.Migrations
 {
-    public partial class test : Migration
+    public partial class updated : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -84,32 +84,32 @@ namespace StockExchange.DAL.Migrations
             migrationBuilder.InsertData(
                 table: "StockSymbols",
                 columns: new[] { "ID", "CompanyName", "ExchangeId", "IsActive", "Ticker" },
-                values: new object[] { 1, "Straton Oakmount", 1, false, new DateTime(2022, 8, 25, 10, 32, 50, 527, DateTimeKind.Local).AddTicks(6520) });
+                values: new object[] { 1, "Straton Oakmount", 1, false, new DateTime(2022, 9, 1, 10, 19, 56, 270, DateTimeKind.Local).AddTicks(1181) });
 
             migrationBuilder.InsertData(
                 table: "StockSymbols",
                 columns: new[] { "ID", "CompanyName", "ExchangeId", "IsActive", "Ticker" },
-                values: new object[] { 2, "Apple", 2, true, new DateTime(2022, 8, 25, 10, 32, 50, 527, DateTimeKind.Local).AddTicks(6525) });
+                values: new object[] { 2, "Apple", 2, true, new DateTime(2022, 9, 1, 10, 19, 56, 270, DateTimeKind.Local).AddTicks(1190) });
 
             migrationBuilder.InsertData(
                 table: "StockSymbols",
                 columns: new[] { "ID", "CompanyName", "ExchangeId", "IsActive", "Ticker" },
-                values: new object[] { 3, "Alphabet", 3, true, new DateTime(2022, 8, 25, 10, 32, 50, 527, DateTimeKind.Local).AddTicks(6529) });
+                values: new object[] { 3, "Alphabet", 3, true, new DateTime(2022, 9, 1, 10, 19, 56, 270, DateTimeKind.Local).AddTicks(1197) });
 
             migrationBuilder.InsertData(
                 table: "EodPrices",
                 columns: new[] { "ID", "ClosePrice", "Date", "StockSymbolId" },
-                values: new object[] { 1, 10.14f, new DateTime(2022, 8, 25, 10, 32, 50, 527, DateTimeKind.Local).AddTicks(6547), 1 });
+                values: new object[] { 1, 10.14f, new DateTime(2022, 9, 1, 10, 19, 56, 270, DateTimeKind.Local).AddTicks(1238), 1 });
 
             migrationBuilder.InsertData(
                 table: "EodPrices",
                 columns: new[] { "ID", "ClosePrice", "Date", "StockSymbolId" },
-                values: new object[] { 2, 20.14f, new DateTime(2022, 8, 25, 10, 32, 50, 527, DateTimeKind.Local).AddTicks(6583), 2 });
+                values: new object[] { 2, 20.14f, new DateTime(2022, 9, 1, 10, 19, 56, 270, DateTimeKind.Local).AddTicks(1245), 2 });
 
             migrationBuilder.InsertData(
                 table: "EodPrices",
                 columns: new[] { "ID", "ClosePrice", "Date", "StockSymbolId" },
-                values: new object[] { 3, 30.14f, new DateTime(2022, 8, 25, 10, 32, 50, 527, DateTimeKind.Local).AddTicks(6586), 3 });
+                values: new object[] { 3, 30.14f, new DateTime(2022, 9, 1, 10, 19, 56, 270, DateTimeKind.Local).AddTicks(1251), 3 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_EodPrices_StockSymbolId",
