@@ -5,6 +5,7 @@
     using StockExchange.DAL.DataModel;
     using StockExchange.DAL.Repos.Interface;
     using StockExchange.Domain.Model;
+    using System;
     using System.Collections.Generic;
 
     public class EodPriceService : IEodPriceService
@@ -14,7 +15,7 @@
         {
             this.eodPriceRepo = eodPriceRepo;
         }
-
+        //GET
         public EodPriceModel GetById(int id)
         {
             EodPrice EodPrice = eodPriceRepo.GetById(id);
@@ -22,6 +23,14 @@
             EodPriceModel responseModel = EodPriceConvert.DalToDomainEodPrice(EodPrice);
 
             return responseModel;
+        }
+        public List<EodPriceModel> GetEodsByStockIdWhereDate(int stockId, DateTime from, DateTime to)
+        {
+            List<EodPrice> eodPrices = eodPriceRepo.GetByStockId(stockId, from, to).ToList();
+
+            ICollection<EodPriceModel> responseModel = EodPriceConvert.DalToDomainListOfEod(eodPrices);
+
+            return responseModel.ToList();
         }
         // POST
         public void InsertEodPrice(EodPriceModel eodPriceModel) //should this return a bool?
@@ -62,6 +71,8 @@
 
             return responseModel.ToList();
         }
+
+
 
         //public ServiceResponse<EodPriceModel> GetEodByDate(DateTime date)
         //{

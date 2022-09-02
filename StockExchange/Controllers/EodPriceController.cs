@@ -33,6 +33,11 @@
 
             return Ok(result);
         }
+        [HttpGet("Return a list of all EODPrices for a given stocksymbol within a certain date range")]
+        public ActionResult<List<EodPriceModel>> GetEodsByStockDate(int stockId, DateTime from, DateTime to)
+        {
+            return eodPriceService.GetEodsByStockIdWhereDate(stockId, from, to);
+        }
         [HttpDelete("Delete eod price")]
         public void DeleteExchangeById(int id)
         {

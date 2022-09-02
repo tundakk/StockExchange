@@ -3,6 +3,7 @@
     using StockExchange.DAL.DataModel;
     using StockExchange.DAL.Repos.Base;
     using StockExchange.DAL.Repos.Interface;
+    using System.Collections.Generic;
     using System.Linq;
 
     public class EodPriceRepo : BaseRepo<EodPrice>, IEodPriceRepo
@@ -30,19 +31,22 @@
 
         public EodPrice GetById(int id)
         {
-            if (id <= 0)
+            if (id < 1)
                 throw new ArgumentException("ID must be greater than 0");
 
             return deliveryContext.EodPrices.Find(id);
         }
 
+        public List<EodPrice> GetByStockId(int stockId, DateTime from, DateTime to)
+        {
+
+            return deliveryContext.EodPrices.Where(s => s.StockSymbolId == stockId && s.Date < to && s.Date > from).ToList();
+        }
+
         public override void Insert(EodPrice entity)
         {
             if (entity == null)
-            {
                 throw new ArgumentException("Insert - BlockFragment must not be null");
-
-            }
 
             deliveryContext.EodPrices.Add(entity);
         }

@@ -7,7 +7,7 @@
     {
         //GET
         List<StockSymbolModel> GetAllStockSymbols();
-        StockSymbolModel GetById(int id);
+        ServiceResponse<StockSymbolModel> GetById(int id);
         ServiceResponse<StockSymbolModel> GetByName(string name);
         List<StockSymbolModel> GetStockByExchangeId(int exchangeId);
         //PUT

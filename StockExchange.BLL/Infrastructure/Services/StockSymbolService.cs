@@ -17,18 +17,33 @@
         }
 
         // GET
-        public StockSymbolModel GetById(int id)
+
+
+        public ServiceResponse<StockSymbolModel> GetById(int id)
         {
             StockSymbol stockSymbol = stockSymbolsRepo.GetById(id);
-            StockSymbolModel responseModel = StockSymbolConvert.DalToDomainStockSymbol(stockSymbol);
+            if (stockSymbol == null)
+            {
+                return new ServiceResponse<StockSymbolModel>()
+                {
+                    Success = false,
+                    Message = "An id wasn't found with that input"
+                };
 
-            return responseModel;
+            }
+
+            return new ServiceResponse<StockSymbolModel>()
+            {
+                Data = StockSymbolConvert.DalToDomainStockSymbol(stockSymbol)
+            };
+
+
         }
         public ServiceResponse<StockSymbolModel> GetByName(string name)
         {
-            StockSymbol stocksymbol = stockSymbolsRepo.GetByName(name);
+            StockSymbol stockSymbol = stockSymbolsRepo.GetByName(name);
 
-            if (stocksymbol == null)//should i check on DAL model or domain model?
+            if (stockSymbol == null)//should i check on DAL model or domain model?
             {
                 return new ServiceResponse<StockSymbolModel>()
                 {
@@ -40,7 +55,7 @@
 
             return new ServiceResponse<StockSymbolModel>()
             {
-                Data = StockSymbolConvert.DalToDomainStockSymbol(stocksymbol)
+                Data = StockSymbolConvert.DalToDomainStockSymbol(stockSymbol)
             };
         }
         public List<StockSymbolModel> GetAllStockSymbols()
@@ -86,5 +101,7 @@
             //return - convert to domain
             return StockSymbolConvert.DalToDomainListOfStock(stockDal).ToList();
         }
+
+
     }
 }

@@ -50,6 +50,10 @@
 
         public List<StockSymbol> GetListOfStockByExchangeId(int exchangeId)
         {
+
+            if (exchangeId < 1)
+                throw new ArgumentException("GetListOfStockByExchangeId - exchangeId cant be lower than 1");
+
             var response = new List<StockSymbol>();
 
             response = GetAll().Where(s => s.ExchangeId == exchangeId)

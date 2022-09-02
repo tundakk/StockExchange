@@ -24,24 +24,42 @@
             ICollection<ExchangeModel> responseModel = ExchangeConvert.DalToDomainListOfExchanges(exchanges);
 
             return responseModel.ToList(); // ICollection and lists. im doing something wrong  ithink
+
+            if (response == null)
+            {
+                return new ServiceResponse<ExchangeModel>()
+                {
+                    Success = false,
+                    Message = "An Exchange with that id wasn't found"
+                };
+            }
+            return new ServiceResponse<ExchangeModel>()
+            {
+                Data = ExchangeConvert.DalToDomainExchange(response)
+            };
         }
 
-        public ExchangeModel GetExchangeById(int id)
+        public ServiceResponse<ExchangeModel> GetExchangeById(int id)
         {
             Exchange response = exchangeRepo.GetById(id);
 
-            //conversion from DAL to Domain
-            ExchangeModel responseModel = ExchangeConvert.DalToDomainExchange(response);
-
-
-            return responseModel;
+            if (response == null)
+            {
+                return new ServiceResponse<ExchangeModel>()
+                {
+                    Success = false,
+                    Message = "An Exchange with that id wasn't found"
+                };
+            }
+            return new ServiceResponse<ExchangeModel>()
+            {
+                Data = ExchangeConvert.DalToDomainExchange(response)
+            };
         }
         public ServiceResponse<ExchangeModel> GetByName(string name)
         {
             Exchange exchange = exchangeRepo.GetByName(name);
-            ServiceResponse<ExchangeModel> responseModel = new ServiceResponse<ExchangeModel>();
-
-            if (exchange == null)//should i check on DAL model or domain model?
+            if (exchange == null)
             {
                 return new ServiceResponse<ExchangeModel>()
                 {
@@ -58,6 +76,8 @@
         // POST
         public void InsertExchange(ExchangeModel exchangeModel) //should this return a bool?
         {
+            if (exchangeModel == null)
+                throw new ArgumentNullException(nameof(exchangeModel));
             Exchange exchange = ExchangeConvert.DomainToDalExchange(exchangeModel);
 
             exchangeRepo.Insert(exchange);

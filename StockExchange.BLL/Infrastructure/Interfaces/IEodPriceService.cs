@@ -7,6 +7,7 @@
         //GET
         //ServiceResponse<EodPriceModel> GetByDate(DateTime date);
         List<EodPriceModel> GetAllEodPrices();
+        List<EodPriceModel> GetEodsByStockIdWhereDate(int stockId, DateTime from, DateTime to);
 
         EodPriceModel GetById(int id);
         //Delete
