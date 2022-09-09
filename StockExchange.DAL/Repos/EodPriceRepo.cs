@@ -14,14 +14,16 @@
 
         }
 
-        public override void Delete(EodPrice entity)
+        public override EodPrice Delete(EodPrice entity)
         {
             if (entity == null)
             {
-                throw new ArgumentException("Delete - Exchange must not be null");
+                throw new ArgumentException("Delete - EodPrice must not be null");
             }
 
             deliveryContext.EodPrices.Remove(entity);
+            return entity;
+
         }
 
         public override IQueryable<EodPrice> GetAll()
@@ -31,24 +33,32 @@
 
         public EodPrice GetById(int id)
         {
-            if (id < 1)
+            if (id <= 0)
                 throw new ArgumentException("ID must be greater than 0");
 
             return deliveryContext.EodPrices.Find(id);
         }
 
-        public List<EodPrice> GetByStockId(int stockId, DateTime from, DateTime to)
+        public List<EodPrice> GetByStockExchangeIdAndDate(int stockId, DateTime startDate, DateTime endDate)
         {
 
-            return deliveryContext.EodPrices.Where(s => s.StockSymbolId == stockId && s.Date < to && s.Date > from).ToList();
+            if (startDate > endDate)
+                throw new ArgumentException("something is wrong with the dates");
+
+            if (stockId <= 0)
+                throw new ArgumentException("ID must be greater than 0");
+
+            return deliveryContext.EodPrices.Where(s => s.StockSymbolId == stockId && s.Date < endDate && s.Date > startDate).ToList();
         }
 
-        public override void Insert(EodPrice entity)
+        public override EodPrice Insert(EodPrice entity)
         {
             if (entity == null)
-                throw new ArgumentException("Insert - BlockFragment must not be null");
+                throw new ArgumentException("Insert - EodPrice must not be null");
 
             deliveryContext.EodPrices.Add(entity);
+
+            return entity;
         }
         //public EodPrice GetByDate(DateTime date)
         //{

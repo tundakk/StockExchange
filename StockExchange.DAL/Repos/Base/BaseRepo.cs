@@ -13,18 +13,19 @@
             this.deliveryContext = deliveryContext;
         }
 
-        public abstract void Delete(T entity);
+        public abstract T Delete(T entity);
 
         public abstract IQueryable<T> GetAll();
 
 
-        public abstract void Insert(T entity);
-        public virtual void Update(T entity)
+        public abstract T Insert(T entity);
+        public virtual T Update(T entity)
         {
             if (entity == null)
                 throw new ArgumentException("Update - Entity must not be null");
 
             deliveryContext.SetModified(entity);
+            return entity;
         }
 
         public void Save()

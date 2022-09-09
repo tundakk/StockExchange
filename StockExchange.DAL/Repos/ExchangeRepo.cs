@@ -44,7 +44,7 @@
         }
 
         // POST
-        public override void Insert(Exchange entity)
+        public override Exchange Insert(Exchange entity)
         {
             if (entity == null)
             {
@@ -52,9 +52,10 @@
             }
 
             deliveryContext.Exchanges.Add(entity);
+            return entity;
         }
         // DELETE
-        public override void Delete(Exchange entity)
+        public override Exchange Delete(Exchange entity)
         {
             if (entity == null)
             {
@@ -62,6 +63,7 @@
             }
 
             deliveryContext.Exchanges.Remove(entity);
+            return entity;
         }
 
 

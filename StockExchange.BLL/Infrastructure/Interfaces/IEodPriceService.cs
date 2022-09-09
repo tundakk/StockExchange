@@ -1,21 +1,22 @@
 ﻿namespace StockExchange.BLL.Infrastructure.Interfaces
 {
     using StockExchange.Domain.Model;
+    using StockExchange.Domain.Model.Responses;
 
     public interface IEodPriceService
     {
         //GET
         //ServiceResponse<EodPriceModel> GetByDate(DateTime date);
-        List<EodPriceModel> GetAllEodPrices();
-        List<EodPriceModel> GetEodsByStockIdWhereDate(int stockId, DateTime from, DateTime to);
+        ServiceResponse<List<EodPriceModel>> GetAllEodPrices();
+        ServiceResponse<List<EodPriceModel>> GetEodsByStockIdWhereDate(int stockId, DateTime from, DateTime to);
 
-        EodPriceModel GetById(int id);
+        ServiceResponse<EodPriceModel> GetById(int id);
         //Delete
-        bool DeleteById(int id);
+        ServiceResponse<EodPriceModel> DeleteById(int id);
         // POST
-        void InsertEodPrice(EodPriceModel eodPriceModel);
+        ServiceResponse<EodPriceModel> InsertEodPrice(EodPriceModel eodPriceModel);
         // PUT
-        void UpdateEodPrice(EodPriceModel eodPriceModel);
+        ServiceResponse<EodPriceModel> UpdateEodPrice(EodPriceModel eodPriceModel);
 
 
     }

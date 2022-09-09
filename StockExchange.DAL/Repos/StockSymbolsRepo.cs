@@ -13,7 +13,7 @@
         {
         }
 
-        public override void Delete(StockSymbol entity)
+        public override StockSymbol Delete(StockSymbol entity)
         {
             if (entity == null)
             {
@@ -21,6 +21,7 @@
             }
 
             deliveryContext.StockSymbols.Remove(entity);
+            return entity;
         }
 
         public override IQueryable<StockSymbol> GetAll()
@@ -39,7 +40,6 @@
                                                                                                                //return this.GetAll().FirstOrDefault(s => s.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
                                                                                                                //.Where(p => p.Name.ToLower().Contains(name.ToLower()))
         }
-
         public StockSymbol GetById(int id)
         {
             if (id <= 0)
@@ -51,7 +51,7 @@
         public List<StockSymbol> GetListOfStockByExchangeId(int exchangeId)
         {
 
-            if (exchangeId < 1)
+            if (exchangeId <= 0)
                 throw new ArgumentException("GetListOfStockByExchangeId - exchangeId cant be lower than 1");
 
             var response = new List<StockSymbol>();
@@ -63,7 +63,7 @@
             return response;
         }
 
-        public override void Insert(StockSymbol entity)
+        public override StockSymbol Insert(StockSymbol entity)
         {
             if (entity == null)
             {
@@ -71,6 +71,7 @@
             }
 
             deliveryContext.StockSymbols.Add(entity);
+            return entity;
         }
 
     }

@@ -63,21 +63,21 @@
                 {
                     ID = 1,
                     Date = DateTime.Now,
-                    ClosePrice = 10.14f,
+                    ClosePrice = 10.14m,
                     StockSymbolId = 1
                 },
                 new EodPrice
                 {
                     ID = 2,
                     Date = DateTime.Now,
-                    ClosePrice = 20.14f,
+                    ClosePrice = 20.14m,
                     StockSymbolId = 2
 
                 }, new EodPrice
                 {
                     ID = 3,
                     Date = DateTime.Now,
-                    ClosePrice = 30.14f,
+                    ClosePrice = 30.14m,
                     StockSymbolId = 3
                 }
             );

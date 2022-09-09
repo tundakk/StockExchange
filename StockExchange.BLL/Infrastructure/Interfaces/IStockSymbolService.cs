@@ -6,16 +6,15 @@
     public interface IStockSymbolService
     {
         //GET
-        List<StockSymbolModel> GetAllStockSymbols();
+        ServiceResponse<List<StockSymbolModel>> GetAllStockSymbols();
         ServiceResponse<StockSymbolModel> GetById(int id);
         ServiceResponse<StockSymbolModel> GetByName(string name);
-        List<StockSymbolModel> GetStockByExchangeId(int exchangeId);
+        ServiceResponse<List<StockSymbolModel>> GetStockByExchangeId(int exchangeId);
         //PUT
-        void UpdateStockSymbol(StockSymbolModel stockSymbolModel);
+        ServiceResponse<StockSymbolModel> UpdateStockSymbol(StockSymbolModel stockSymbolModel);
         // POST
-        public void InsertStockSymbol(StockSymbolModel stockSymbolModel);
+        ServiceResponse<StockSymbolModel> InsertStockSymbol(StockSymbolModel stockSymbolModel);
         // DELETE
-        bool DeleteById(int id);
-
+        ServiceResponse<StockSymbolModel> DeleteById(int id);
     }
 }

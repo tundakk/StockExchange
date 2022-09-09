@@ -3,9 +3,9 @@
     public interface IBaseRepo<T> where T : class
     {
         IQueryable<T> GetAll();
-        void Insert(T entity);
-        void Update(T entity);
-        void Delete(T entity);
+        T Insert(T entity);
+        T Update(T entity);
+        T Delete(T entity);
         void Save();
 
         //Explicit Load support

@@ -8,15 +8,15 @@
     {
         //GET
         ServiceResponse<ExchangeModel> GetByName(string name);
-        List<ExchangeModel> GetAllExchanges();
+        ServiceResponse<List<ExchangeModel>> GetAllExchanges();
         ServiceResponse<ExchangeModel> GetExchangeById(int id);
         //PUT
-        void UpdateExchange(ExchangeModel exchangeModel);
+        ServiceResponse<ExchangeModel> UpdateExchange(ExchangeModel exchangeModel);
 
         //POST
-        public void InsertExchange(ExchangeModel exchangeModel);
+        ServiceResponse<ExchangeModel> InsertExchange(ExchangeModel exchangeModel);
 
         //DELETE
-        bool DeleteById(int id);
+        ServiceResponse<ExchangeModel> DeleteById(int id);
     }
 }
