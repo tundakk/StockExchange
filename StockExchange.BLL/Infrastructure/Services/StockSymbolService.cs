@@ -1,7 +1,7 @@
 ﻿namespace StockExchange.BLL.Infrastructure.Services
 {
+    using AutoMapper;
     using Microsoft.Extensions.Logging;
-    using StockExchange.BLL.Conversions;
     using StockExchange.BLL.Infrastructure.Interfaces;
     using StockExchange.DAL.DataModel;
     using StockExchange.DAL.Repos.Interface;
@@ -12,9 +12,12 @@
     public class StockSymbolService : BaseService<StockSymbolService>, IStockSymbolService
     {
         private readonly IStockSymbolsRepo stockSymbolsRepo;
-        public StockSymbolService(IStockSymbolsRepo stockSymbolsRepo, ILogger<StockSymbolService> logger) : base(logger)
+        private readonly IMapper mapper;
+
+        public StockSymbolService(IStockSymbolsRepo stockSymbolsRepo, IMapper mapper, ILogger<StockSymbolService> logger) : base(logger)
         {
             this.stockSymbolsRepo = stockSymbolsRepo;
+            this.mapper = mapper;
         }
         // GET
         public ServiceResponse<StockSymbolModel> GetById(int id)
@@ -31,7 +34,7 @@
             }
             return new ServiceResponse<StockSymbolModel>()
             {
-                Data = StockSymbolConvert.DalToDomainStockSymbol(stockSymbol)
+                Data = mapper.Map<StockSymbolModel>(stockSymbol)
             };
         }
         public ServiceResponse<StockSymbolModel> GetByName(string name)
@@ -48,14 +51,14 @@
             }
             return new ServiceResponse<StockSymbolModel>()
             {
-                Data = StockSymbolConvert.DalToDomainStockSymbol(stockSymbol)
+                Data = mapper.Map<StockSymbolModel>(stockSymbol)
             };
         }
         public ServiceResponse<List<StockSymbolModel>> GetAllStockSymbols()
         {
-            List<StockSymbol> stockSymbol = stockSymbolsRepo.GetAll().ToList();
+            List<StockSymbol> stockSymbols = stockSymbolsRepo.GetAll().ToList();
 
-            if (stockSymbol == null)//should i check on DAL model or domain model?
+            if (stockSymbols == null)//should i check on DAL model or domain model?
             {
                 return new ServiceResponse<List<StockSymbolModel>>()
                 {
@@ -65,7 +68,7 @@
             }
             return new ServiceResponse<List<StockSymbolModel>>()
             {
-                Data = StockSymbolConvert.DalToDomainListOfStock(stockSymbol).ToList()
+                Data = mapper.Map<List<StockSymbolModel>>(stockSymbols)
             };
 
             // ICollection and lists. im doing something wrong i think
@@ -73,7 +76,7 @@
         // POST
         public ServiceResponse<StockSymbolModel> InsertStockSymbol(StockSymbolModel stockSymbolModel)
         {
-            StockSymbol stockSymbol = StockSymbolConvert.DomainToDalStockSymbol(stockSymbolModel);
+            StockSymbol stockSymbol = mapper.Map<StockSymbol>(stockSymbolModel);
 
             if (stockSymbol == null)
             {
@@ -88,13 +91,13 @@
 
             return new ServiceResponse<StockSymbolModel>()
             {
-                Data = StockSymbolConvert.DalToDomainStockSymbol(stockSymbol)
+                Data = mapper.Map<StockSymbolModel>(stockSymbol)
             };
         }
         // UPDATE
         public ServiceResponse<StockSymbolModel> UpdateStockSymbol(StockSymbolModel stockSymbolModel)
         {
-            StockSymbol stockSymbol = StockSymbolConvert.DomainToDalStockSymbol(stockSymbolModel);
+            StockSymbol stockSymbol = mapper.Map<StockSymbol>(stockSymbolModel);
 
             if (stockSymbol == null)
             {
@@ -108,7 +111,7 @@
             stockSymbolsRepo.Save();
             return new ServiceResponse<StockSymbolModel>()
             {
-                Data = StockSymbolConvert.DalToDomainStockSymbol(responseStock)
+                Data = mapper.Map<StockSymbolModel>(responseStock)
             };
         }
         // DELETE
@@ -128,14 +131,14 @@
 
             return new ServiceResponse<StockSymbolModel>()
             {
-                Data = StockSymbolConvert.DalToDomainStockSymbol(responseStock)
+                Data = mapper.Map<StockSymbolModel>(responseStock)
             };
         }
         public ServiceResponse<List<StockSymbolModel>> GetStockByExchangeId(int exchangeId)
         {
-            List<StockSymbol> stockSymbol = stockSymbolsRepo.GetListOfStockByExchangeId(exchangeId);
+            List<StockSymbol> stockSymbols = stockSymbolsRepo.GetListOfStockByExchangeId(exchangeId);
 
-            if (stockSymbol == null)
+            if (stockSymbols == null)
             {
                 return new ServiceResponse<List<StockSymbolModel>>()
                 {
@@ -146,7 +149,7 @@
             //return - convert to domain
             return new ServiceResponse<List<StockSymbolModel>>()
             {
-                Data = StockSymbolConvert.DalToDomainListOfStock(stockSymbol).ToList()
+                Data = mapper.Map<List<StockSymbolModel>>(stockSymbols)
             };
         }
     }

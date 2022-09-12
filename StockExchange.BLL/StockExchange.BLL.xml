@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StockExchange.BLL</name>
+    </assembly>
+    <members>
+        <member name="T:StockExchange.BLL.Infrastructure.Interfaces.IEodPriceService">
+            <summary>
+            EodPrice Service interface.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IEodPriceService.GetAllEodPrices">
+            <summary>
+            It gets a list of all the Eod prices in the system.
+            </summary>
+            <returns>a list of populated EodPriceModel.</returns>
+        </member>
+        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IEodPriceService.GetEodsByStockIdWhereDate(System.Int32,System.DateTime,System.DateTime)">
+            <summary>
+            It gets a list of eodprice by id, from a range of dates.
+            </summary>
+            <param name="stockId">stocksymbolId.</param>
+            <param name="from">From a specific date.</param>
+            <param name="to">To a specific date.</param>
+            <returns>A list of populated EodPriceModel. </returns>
+        </member>
+        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IEodPriceService.GetById(System.Int32)">
+            <summary>
+            It gets a particular Eod Price available in the system.
+            </summary>
+            <param name="id"></param>
+            <returns>A populated EodPriceModel object.</returns>
+        </member>
+        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IEodPriceService.DeleteById(System.Int32)">
+            <summary>
+            A method for deleting
+            </summary>
+            <param name="id"></param>
+            <returns>A populated EodPriceModel object matching the deleted entity.</returns>
+        </member>
+        <member name="T:StockExchange.BLL.Infrastructure.Services.EodPriceService">
+            <summary>
+            EodPrice Service.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Infrastructure.Services.EodPriceService.#ctor(StockExchange.DAL.Repos.Interface.IEodPriceRepo,AutoMapper.IMapper,Microsoft.Extensions.Logging.ILogger{StockExchange.BLL.Infrastructure.Services.EodPriceService})">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockExchange.BLL.Infrastructure.Services.EodPriceService"/> class.
+            </summary>
+            <param name="eodPriceRepo"></param>
+            <param name="mapper"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:StockExchange.BLL.Infrastructure.Services.EodPriceService.GetAllEodPrices">
+            <inheritdoc/>
+        </member>
+        <member name="M:StockExchange.BLL.Infrastructure.Services.EodPriceService.GetById(System.Int32)">
+            <summary>
+            testestes.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StockExchange.BLL.Infrastructure.Services.EodPriceService.GetEodsByStockIdWhereDate(System.Int32,System.DateTime,System.DateTime)">
+            <summary>
+            testestes.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Infrastructure.Services.EodPriceService.InsertEodPrice(StockExchange.Domain.Model.EodPriceModel)">
+            
+        </member>
+        <member name="M:StockExchange.BLL.Infrastructure.Services.EodPriceService.UpdateEodPrice(StockExchange.Domain.Model.EodPriceModel)">
+            <summary>
+            testestes.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Infrastructure.Services.EodPriceService.DeleteById(System.Int32)">
+            <summary>
+            testestes.
+            </summary>
+        </member>
+        <member name="T:StockExchange.BLL.Infrastructure.Services.ExchangeService">
+            <summary>
+            testestes.
+            </summary>
+        </member>
+    </members>
+</doc>

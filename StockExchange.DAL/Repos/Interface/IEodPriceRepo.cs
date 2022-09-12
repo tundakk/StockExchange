@@ -7,7 +7,7 @@
     {
         //GET
         EodPrice GetById(int id);
-        List<EodPrice> GetByStockExchangeIdAndDate(int stockId, DateTime from, DateTime to);
+        IEnumerable<EodPrice> GetByStockExchangeIdAndDate(int stockId, DateTime from, DateTime to);
         //EodPrice GetByDate(DateTime date);
 
         //get by date EodPrice GetByDate(string date);

@@ -18,12 +18,32 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockExchange.DAL", "StockExchange.DAL\StockExchange.DAL.csproj", "{04849571-A300-4EA5-A7C7-4197C0441BC4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockExchange.Domain.Model", "StockExchange.Domain.Model\StockExchange.Domain.Model.csproj", "{7A65DC06-DF4F-4109-98F0-E785021F3C50}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockExchange.Test", "StockExchange.Test\StockExchange.Test.csproj", "{37E6A7C8-D2D3-414D-A44C-7F38D87A8F09}"
 	ProjectSection(ProjectDependencies) = postProject
-		{7A65DC06-DF4F-4109-98F0-E785021F3C50} = {7A65DC06-DF4F-4109-98F0-E785021F3C50}
-		{B5F712BA-A23A-4C28-8C1A-C706A7EE56AD} = {B5F712BA-A23A-4C28-8C1A-C706A7EE56AD}
+		{04849571-A300-4EA5-A7C7-4197C0441BC4} = {04849571-A300-4EA5-A7C7-4197C0441BC4}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockExchange.BLL.Tests", "StockExchange.BLL.Tests\StockExchange.BLL.Tests.csproj", "{A428CE55-A8C3-4F70-AC94-0772B422E60F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5BF2DA93-8096-43AB-AE81-A0BC0717D134} = {5BF2DA93-8096-43AB-AE81-A0BC0717D134}
 		{EEE5F031-9DF1-49D1-BCDF-58213F60F4DB} = {EEE5F031-9DF1-49D1-BCDF-58213F60F4DB}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockExchange.DAL.Tests", "StockExchange.DAL.Tests\StockExchange.DAL.Tests.csproj", "{5BF2DA93-8096-43AB-AE81-A0BC0717D134}"
+	ProjectSection(ProjectDependencies) = postProject
+		{04849571-A300-4EA5-A7C7-4197C0441BC4} = {04849571-A300-4EA5-A7C7-4197C0441BC4}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockExchange.Base.Tests", "StockExchange.Base.Tests\StockExchange.Base.Tests.csproj", "{A2A9E7B0-E012-4E9A-94A9-DF838E188E50}"
+	ProjectSection(ProjectDependencies) = postProject
+		{04849571-A300-4EA5-A7C7-4197C0441BC4} = {04849571-A300-4EA5-A7C7-4197C0441BC4}
+		{7A65DC06-DF4F-4109-98F0-E785021F3C50} = {7A65DC06-DF4F-4109-98F0-E785021F3C50}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{81F4F893-1261-4F25-BEF9-7DCB02F66749}"
+	ProjectSection(SolutionItems) = preProject
+		nuget.config = nuget.config
+		stylecop.json = stylecop.json
+		StyleCop.Ruleset = StyleCop.Ruleset
 	EndProjectSection
 EndProject
 Global
@@ -48,10 +68,18 @@ Global
 		{7A65DC06-DF4F-4109-98F0-E785021F3C50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A65DC06-DF4F-4109-98F0-E785021F3C50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A65DC06-DF4F-4109-98F0-E785021F3C50}.Release|Any CPU.Build.0 = Release|Any CPU
-		{37E6A7C8-D2D3-414D-A44C-7F38D87A8F09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{37E6A7C8-D2D3-414D-A44C-7F38D87A8F09}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{37E6A7C8-D2D3-414D-A44C-7F38D87A8F09}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{37E6A7C8-D2D3-414D-A44C-7F38D87A8F09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A428CE55-A8C3-4F70-AC94-0772B422E60F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A428CE55-A8C3-4F70-AC94-0772B422E60F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A428CE55-A8C3-4F70-AC94-0772B422E60F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A428CE55-A8C3-4F70-AC94-0772B422E60F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BF2DA93-8096-43AB-AE81-A0BC0717D134}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BF2DA93-8096-43AB-AE81-A0BC0717D134}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BF2DA93-8096-43AB-AE81-A0BC0717D134}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BF2DA93-8096-43AB-AE81-A0BC0717D134}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2A9E7B0-E012-4E9A-94A9-DF838E188E50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2A9E7B0-E012-4E9A-94A9-DF838E188E50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2A9E7B0-E012-4E9A-94A9-DF838E188E50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2A9E7B0-E012-4E9A-94A9-DF838E188E50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

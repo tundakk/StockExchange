@@ -7,23 +7,23 @@
 
     [Route("api/[controller]")]
     [ApiController]
-    public class ExchangeController : BaseApiController<ExchangeController>
+    public class ExchangesController : BaseApiController<ExchangesController>
     {
         private readonly IExchangeService exchangeService;
-        public ExchangeController(IExchangeService exchangeService, ILogger<ExchangeController> logger) : base(logger)
+        public ExchangesController(IExchangeService exchangeService, ILogger<ExchangesController> logger) : base(logger)
         {
             this.exchangeService = exchangeService;
         }
-        [HttpGet("GetAllExchanges")]
+        [HttpGet("")]
         public ActionResult<List<ExchangeModel>> ListAllExchanges()
         {
             ServiceResponse<List<ExchangeModel>> response = exchangeService.GetAllExchanges();
             if (response.Data.Count == 0)
-                return NotFound();
+                return NoContent();
 
             return Ok(response.Data);
         }
-        [HttpGet("Search for exchange by name")]
+        [HttpGet("name")] //dunno about this
         public ActionResult<ExchangeModel> GetExchangeByName(string name)
         {
             if (String.IsNullOrEmpty(name))
@@ -31,56 +31,56 @@
 
             ServiceResponse<ExchangeModel> response = exchangeService.GetByName(name);
             if (response.Data == null)
-                return NotFound();
+                return NoContent();
 
-            return Ok(response);
+            return Ok(response.Data);
         }
 
-        [HttpGet("Get exchange by ID")]
+        [HttpGet("{id}")]
         public ActionResult<ExchangeModel> GetExchangeById(int id)
         {
-            if (id == 0)
+            if (id <= 0)
                 return BadRequest();
 
             ServiceResponse<ExchangeModel> response = exchangeService.GetExchangeById(id);
             if (response.Data == null)
-                return NotFound();
+                return NoContent();
 
             return Ok(response.Data);
         }
-        [HttpDelete("Delete exchange")]
+        [HttpDelete("{id}")]
         public ActionResult<ExchangeModel> DeleteExchangeById(int id)
         {
-            if (id == 0)
+            if (id <= 0)
                 return BadRequest();
 
             ServiceResponse<ExchangeModel> response = exchangeService.DeleteById(id);
             if (response.Data == null)
-                return NotFound();
+                return NoContent();
 
             return Ok(response.Data);
         }
-        [HttpPut("Update an exchange")]
+        [HttpPut]
         public ActionResult<ExchangeModel> UpdateExchange(ExchangeModel exchangeModel)
         {
-            if (exchangeModel.ID == 0)
+            if (exchangeModel.ID <= 0)
                 return BadRequest();
 
             ServiceResponse<ExchangeModel> response = exchangeService.UpdateExchange(exchangeModel);
             if (response.Data == null)
-                return NotFound();
+                return NoContent();
 
             return Ok(response.Data);
         }
-        [HttpPost("Create an exchange")]
+        [HttpPost]
         public ActionResult<ExchangeModel> CreateExchange(ExchangeModel exchangeModel)
         {
-            if (exchangeModel.ID == 0)
+            if (exchangeModel.ID <= 0)
                 return BadRequest();
 
             ServiceResponse<ExchangeModel> response = exchangeService.InsertExchange(exchangeModel);
             if (response.Data == null)
-                return NotFound();
+                return NoContent();
 
             return Ok(response.Data);
         }

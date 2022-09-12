@@ -8,7 +8,7 @@
         //GET
         StockSymbol GetById(int id);
         StockSymbol GetByName(string name);
-        List<StockSymbol> GetListOfStockByExchangeId(int exchangeId);
+        IEnumerable<StockSymbol> GetListOfStockByExchangeId(int exchangeId);
 
         //PUT
         //POST

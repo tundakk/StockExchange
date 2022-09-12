@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StockExchange.Base.Tests</name>
+    </assembly>
+    <members>
+        <member name="T:StockExchange.Base.Tests.BaseTest`1">
+            <summary>
+            BaseTest.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:StockExchange.Base.Tests.BaseTest`1.LoggerMock">
+            <summary>
+            Return  Logger Mock for each test.
+            </summary>
+        </member>
+    </members>
+</doc>

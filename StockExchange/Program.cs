@@ -6,6 +6,7 @@ namespace StockExchange
     using StockExchange.DAL.DataModel; //can i make a reference like this? 
     using StockExchange.DAL.Repos;
     using StockExchange.DAL.Repos.Interface;
+    using StockExchange.Domain.Model.Mapping;
 
     public class Program
     {
@@ -34,7 +35,8 @@ namespace StockExchange
             builder.Services.AddScoped<IExchangeService, ExchangeService>();
             builder.Services.AddScoped<IStockSymbolService, StockSymbolService>();
             builder.Services.AddScoped<IEodPriceService, EodPriceService>();
-
+            //mapping
+            builder.Services.AddAutoMapper(typeof(MappingProfiles));
 
 
             var app = builder.Build();

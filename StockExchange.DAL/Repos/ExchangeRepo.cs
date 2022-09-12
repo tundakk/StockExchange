@@ -1,9 +1,9 @@
 ﻿namespace StockExchange.DAL.Repos
 {
+    using System.Linq;
     using StockExchange.DAL.DataModel;
     using StockExchange.DAL.Repos.Base;
     using StockExchange.DAL.Repos.Interface;
-    using System.Linq;
 
     public class ExchangeRepo : BaseRepo<Exchange>, IExchangeRepo
     {
@@ -28,7 +28,9 @@
         public Exchange GetById(int id)
         {
             if (id <= 0)
+            {
                 throw new ArgumentException("ID must be greater than 0");
+            }
 
             return deliveryContext.Exchanges.Find(id);
         }
@@ -36,11 +38,14 @@
         public Exchange GetByName(string name)
         {
             if (string.IsNullOrEmpty(name))
+            {
                 throw new ArgumentException("GetByName - name must not be null or empty.");
+            }
 
             return this.GetAll()
-                .FirstOrDefault(s => string.Equals(s.Name.ToLower(), name.ToLower()));  //does it iterate through the string and stops when theres a difference?
-                                                                                        //is it better than .Where?
+                .FirstOrDefault(s => string
+                .Equals(s.Name.ToLower(), name.ToLower()));  //does it iterate through the string and stops when theres a difference?
+                                                             //is it better than .Where?
         }
 
         // POST
