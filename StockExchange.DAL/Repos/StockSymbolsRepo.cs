@@ -6,12 +6,25 @@
     using StockExchange.DAL.Repos.Base;
     using StockExchange.DAL.Repos.Interface;
 
+    /// <summary>
+    /// Repository class for stocksymbol.
+    /// </summary>
     public class StockSymbolsRepo : BaseRepo<StockSymbol>, IStockSymbolsRepo
     {
+        /// <summary>
+        /// Default constructor for StockSymbolsRepo.
+        /// </summary>
+        /// <param name="deliveryContext">Public readonly property on the BaseRepo class.</param>
         public StockSymbolsRepo(DataContext deliveryContext) : base(deliveryContext)
         {
         }
 
+        /// <summary>
+        /// Deletes a stocksymbol.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns>returns the stocksymbol that was deleted.</returns>
+        /// <exception cref="ArgumentException"></exception>
         public override StockSymbol Delete(StockSymbol entity)
         {
             if (entity == null)
@@ -19,16 +32,26 @@
                 throw new ArgumentException("Delete - Exchange must not be null");
             }
 
-            deliveryContext.StockSymbols.Remove(entity);
+            DeliveryContext.StockSymbols.Remove(entity);
             return entity;
         }
 
+        /// <summary>
+        /// Gets all entities from stocksymbol table.
+        /// </summary>
+        /// <returns>returns a populated list of type StockSymbol, of all entities in the database.</returns>
         public override IQueryable<StockSymbol> GetAll()
         {
-            return deliveryContext.StockSymbols;
+            return DeliveryContext.StockSymbols;
         }
 
-        public StockSymbol GetByName(string name)
+        /// <summary>
+        /// It gets an object of type StockSymbol from repo by name.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>a populated StockSymbol object.</returns>
+        /// <exception cref="ArgumentException"></exception>
+        public StockSymbol? GetByName(string name)
         {
             if (string.IsNullOrEmpty(name))
             {
@@ -44,21 +67,33 @@
             // .Where(p => p.Name.ToLower().Contains(name.ToLower()))
         }
 
-        public StockSymbol GetById(int id)
+        /// <summary>
+        /// Get StockSymbol object by ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Returns a populated StockSymbol object by matching ID.</returns>
+        /// <exception cref="ArgumentException"></exception>
+        public StockSymbol? GetById(int id)
         {
             if (id <= 0)
             {
                 throw new ArgumentException("ID must be greater than 0");
             }
 
-            return deliveryContext.StockSymbols.Find(id);
+            return DeliveryContext.StockSymbols.Find(id);
         }
 
-        public List<StockSymbol> GetListOfStockByExchangeId(int exchangeId)
+        /// <summary>
+        /// Gets a list of StockSymbol by exchangeId.
+        /// </summary>
+        /// <param name="exchangeId"></param>
+        /// <returns>Returns a list of StockSymbol all entities with exchangeId set to input.</returns>
+        /// <exception cref="ArgumentException"></exception>
+        public IEnumerable<StockSymbol> GetListOfStockByExchangeId(int exchangeId)
         {
             if (exchangeId <= 0)
             {
-                throw new ArgumentException("GetListOfStockByExchangeId - exchangeId cant be lower than 1");
+                throw new ArgumentException("GetListOfStockByExchangeId - exchangeId cant be equal or less than 0");
             }
 
             var response = new List<StockSymbol>();
@@ -70,6 +105,12 @@
             return response;
         }
 
+        /// <summary>
+        /// Inserts a stocksymbol into the database.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns>returns the populated stocksymbol that was inserted.</returns>
+        /// <exception cref="ArgumentException"></exception>
         public override StockSymbol Insert(StockSymbol entity)
         {
             if (entity == null)
@@ -77,7 +118,7 @@
                 throw new ArgumentException("Insert - BlockFragment must not be null");
             }
 
-            deliveryContext.StockSymbols.Add(entity);
+            DeliveryContext.StockSymbols.Add(entity);
             return entity;
         }
     }

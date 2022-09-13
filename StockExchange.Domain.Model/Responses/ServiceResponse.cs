@@ -6,8 +6,19 @@
     /// <typeparam name="T"></typeparam>
     public class ServiceResponse<T>
     {
-        public T? Data { get; set; } // placeholder type 
-        public bool Success { get; set; } = true; //this property and Message is used to give tell if data is null and what reason it could be. if/else statement
+        /// <summary>
+        /// Placeholder type intended to be populated by a object or list of objects.
+        /// </summary>
+        public T? Data { get; set; }
+
+        /// <summary>
+        /// Set to false if property 'Data' has no data.
+        /// </summary>
+        public bool Success { get; set; } = true;
+
+        /// <summary>
+        /// Error message set when Success is false, to give context of the problem.
+        /// </summary>
         public string Message { get; set; } = string.Empty;
     }
 }

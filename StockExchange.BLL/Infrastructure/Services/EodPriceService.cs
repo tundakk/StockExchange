@@ -32,10 +32,13 @@
 
         // GET
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// It gets a IEnumerable of all the EodPriceModel in the system.
+        /// </summary>
+        /// <returns> Returns an IEnumerable of populated EodPriceModel.</returns>
         public ServiceResponse<IEnumerable<EodPriceModel>> GetAllEodPrices()
         {
-            IEnumerable<EodPrice> eodPrice = eodPriceRepo.GetAll().ToList();
+            IEnumerable<EodPrice> eodPrice = eodPriceRepo.GetAll();
 
             if (eodPrice == null)
             {
@@ -53,13 +56,22 @@
         }
 
         /// <summary>
-        /// testestes.
+        /// It gets a particular EodPriceModel available in the system.
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>A populated EodPriceModel object.</returns>
         public ServiceResponse<EodPriceModel> GetById(int id)
         {
-            EodPrice eodPrice = eodPriceRepo.GetById(id);
+            if (id <= 0)
+            {
+                return new ServiceResponse<EodPriceModel>()
+                {
+                    Success = false,
+                    Message = "The id cannot be 0 or less",
+                };
+            }
+
+            EodPrice? eodPrice = eodPriceRepo.GetById(id);
 
             if (eodPrice == null)
             {
@@ -77,11 +89,42 @@
         }
 
         /// <summary>
-        /// testestes.
+        /// It gets a list of EodPriceModel by id, from a range of dates.
         /// </summary>
-        public ServiceResponse<IEnumerable<EodPriceModel>> GetEodsByStockIdWhereDate(int stockId, DateTime from, DateTime to)
+        /// <param name="stockId">StockSymbolId.</param>
+        /// <param name="from">From a specific date.</param>
+        /// <param name="to">To a specific date.</param>
+        /// <returns>A list of populated EodPriceModel. </returns>
+        public ServiceResponse<IEnumerable<EodPriceModel>> GetEodsByStockIdWhereDate(int stockId, DateTime? from, DateTime? to)
         {
-            List<EodPrice> eodPrices = eodPriceRepo.GetByStockExchangeIdAndDate(stockId, from, to).ToList();
+            if (stockId <= 0)
+            {
+                return new ServiceResponse<IEnumerable<EodPriceModel>>()
+                {
+                    Success = false,
+                    Message = "The stockId cannot be 0 or less",
+                };
+            }
+
+            if (from == null)
+            {
+                return new ServiceResponse<IEnumerable<EodPriceModel>>()
+                {
+                    Success = false,
+                    Message = "The date 'from' cannot be null",
+                };
+            }
+
+            if (to == null)
+            {
+                return new ServiceResponse<IEnumerable<EodPriceModel>>()
+                {
+                    Success = false,
+                    Message = "The date 'to' cannot be null",
+                };
+            }
+
+            IEnumerable<EodPrice> eodPrices = eodPriceRepo.GetByStockExchangeIdAndDate(stockId, from, to);
 
             if (eodPrices == null)
             {
@@ -100,8 +143,22 @@
 
         // POST
 
+        /// <summary>
+        /// It inserts a particular EodPriceModel object.
+        /// </summary>
+        /// <param name="eodPriceModel"></param>
+        /// <returns>returns a populated EodPriceModel object.</returns>
         public ServiceResponse<EodPriceModel> InsertEodPrice(EodPriceModel eodPriceModel) // should this return a bool?
         {
+            if (eodPriceModel == null)
+            {
+                return new ServiceResponse<EodPriceModel>()
+                {
+                    Success = false,
+                    Message = "eodPriceModel object cannot be null",
+                };
+            }
+
             EodPrice eodPrice = mapper.Map<EodPrice>(eodPriceModel);
             if (eodPrice == null)
             {
@@ -113,7 +170,9 @@
             }
 
             EodPrice responseEodPrice = this.eodPriceRepo.Insert(eodPrice);
+
             this.eodPriceRepo.Save();
+
             return new ServiceResponse<EodPriceModel>()
             {
                 Data = mapper.Map<EodPriceModel>(responseEodPrice),
@@ -123,10 +182,21 @@
         // UPDATE
 
         /// <summary>
-        /// testestes.
+        /// It updates a particular EodPriceModel object.
         /// </summary>
+        /// <param name="eodPriceModel"></param>
+        /// <returns>Returns the update EodPriceModel object.</returns>
         public ServiceResponse<EodPriceModel> UpdateEodPrice(EodPriceModel eodPriceModel)
         {
+            if (eodPriceModel == null)
+            {
+                return new ServiceResponse<EodPriceModel>()
+                {
+                    Success = false,
+                    Message = "eodPriceModel object cannot be null",
+                };
+            }
+
             EodPrice eodPrice = mapper.Map<EodPrice>(eodPriceModel);
 
             if (eodPrice == null)
@@ -151,11 +221,22 @@
         // DELETE
 
         /// <summary>
-        /// testestes.
+        /// It deletes a particular EodPriceModel object by id.
         /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Returns the deleted EodPriceModel object.</returns>
         public ServiceResponse<EodPriceModel> DeleteById(int id)
         {
-            EodPrice eodPrice = eodPriceRepo.GetById(id);
+            if (id <= 0)
+            {
+                return new ServiceResponse<EodPriceModel>()
+                {
+                    Success = false,
+                    Message = "The id cannot be 0 or less",
+                };
+            }
+
+            EodPrice? eodPrice = eodPriceRepo.GetById(id);
 
             if (eodPrice == null)
             {
@@ -167,6 +248,7 @@
             }
 
             EodPrice responseEodPrice = eodPriceRepo.Delete(eodPrice);
+
             eodPriceRepo.Save();
 
             return new ServiceResponse<EodPriceModel>()

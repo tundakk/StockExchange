@@ -10,12 +10,10 @@
     {
         // GET
 
-        // ServiceResponse<EodPriceModel> GetByDate(DateTime date);
-
         /// <summary>
         /// It gets a list of all the Eod prices in the system.
         /// </summary>
-        /// <returns>a list of populated EodPriceModel.</returns>
+        /// <returns>Returns a list of populated EodPriceModel.</returns>
         ServiceResponse<IEnumerable<EodPriceModel>> GetAllEodPrices();
 
         /// <summary>
@@ -25,28 +23,40 @@
         /// <param name="from">From a specific date.</param>
         /// <param name="to">To a specific date.</param>
         /// <returns>A list of populated EodPriceModel. </returns>
-        ServiceResponse<IEnumerable<EodPriceModel>> GetEodsByStockIdWhereDate(int stockId, DateTime from, DateTime to);
+        ServiceResponse<IEnumerable<EodPriceModel>> GetEodsByStockIdWhereDate(int stockId, DateTime? from, DateTime? to);
 
         /// <summary>
-        /// It gets a particular Eod Price available in the system.
+        /// It gets a particular EodPriceModel object available in the system.
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>A populated EodPriceModel object.</returns>
+        /// <returns>Returns a populated EodPriceModel object.</returns>
         ServiceResponse<EodPriceModel> GetById(int id);
 
         // Delete
 
         /// <summary>
-        /// A method for deleting
+        /// A method for deleting an entity from database.
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>A populated EodPriceModel object matching the deleted entity.</returns>
+        /// <returns>Returns a populated EodPriceModel object matching the deleted entity.</returns>
         ServiceResponse<EodPriceModel> DeleteById(int id);
 
         // POST
+
+        /// <summary>
+        /// Inserts a EodPriceModel object into the database.
+        /// </summary>
+        /// <param name="eodPriceModel"></param>
+        /// <returns>Returns a populated EodPriceModel object.</returns>
         ServiceResponse<EodPriceModel> InsertEodPrice(EodPriceModel eodPriceModel);
 
         // PUT
+
+        /// <summary>
+        /// Updates a EodPriceModel object in the database.
+        /// </summary>
+        /// <param name="eodPriceModel"></param>
+        /// <returns>Returns a populated EodPriceModel object.</returns>
         ServiceResponse<EodPriceModel> UpdateEodPrice(EodPriceModel eodPriceModel);
     }
 }

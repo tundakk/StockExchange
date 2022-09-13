@@ -3,6 +3,9 @@
     using AutoMapper;
     using StockExchange.DAL.DataModel;
 
+    /// <summary>
+    /// Class containing mapping profiles.
+    /// </summary>
     public class MappingProfiles : Profile
     {
         /// <summary>
@@ -16,8 +19,6 @@
             CreateMap<StockSymbolModel, StockSymbol>();
             CreateMap<EodPrice, EodPriceModel>();
             CreateMap<EodPriceModel, EodPrice>();
-
-
         }
     }
 }

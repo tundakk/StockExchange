@@ -3,11 +3,26 @@
     using StockExchange.DAL.DataModel;
     using StockExchange.DAL.Repos.Base;
 
+    /// <summary>
+    /// Interface for repository for StockSymbolsRepo.
+    /// </summary>
     public interface IExchangeRepo : IBaseRepo<Exchange>
     {
         //GET
-        Exchange GetById(int id);
-        Exchange GetByName(string name);
+
+        /// <summary>
+        /// Get Exchange object by ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Returns a populated Exchange object.</returns>
+        Exchange? GetById(int id);
+
+        /// <summary>
+        /// Get Exchange object by name property.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>Returns a populated Exchange object.</returns>
+        Exchange? GetByName(string name);
 
         //PUT
         //POST

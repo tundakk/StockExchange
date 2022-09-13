@@ -1,38 +1,66 @@
 ﻿namespace StockExchange.DAL.Repos.Base
 {
-    using StockExchange.DAL.DataModel;
     using System.Linq;
+    using StockExchange.DAL.DataModel;
 
+    /// <summary>
+    /// The base repository class.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public abstract class BaseRepo<T> : IBaseRepo<T> where T : class, new()
     {
-        public readonly DataContext deliveryContext;
+        /// <summary>
+        /// Public readonly property used as DI for classes.
+        /// </summary>
+        public readonly DataContext DeliveryContext;
 
-
+        /// <summary>
+        /// default constructor for the BaseRepo class.
+        /// </summary>
+        /// <param name="deliveryContext"></param>
         public BaseRepo(DataContext deliveryContext)
         {
-            this.deliveryContext = deliveryContext;
+            this.DeliveryContext = deliveryContext;
         }
 
+        /// <summary>
+        /// The abstract Delete method.
+        /// </summary>
+        /// <param name="entity"></param>
         public abstract T Delete(T entity);
 
+        /// <summary>
+        /// The abstract GetAll method.
+        /// </summary>
         public abstract IQueryable<T> GetAll();
 
-
+        /// <summary>
+        /// The abstract Insert method.
+        /// </summary>
         public abstract T Insert(T entity);
+
+        /// <summary>
+        /// The abstract Update method.
+        /// </summary>
         public virtual T Update(T entity)
         {
             if (entity == null)
+            {
                 throw new ArgumentException("Update - Entity must not be null");
+            }
 
-            deliveryContext.SetModified(entity);
+            DeliveryContext.SetModified(entity);
             return entity;
         }
 
+        /// <summary>
+        /// The default Save method.
+        /// </summary>
         public void Save()
         {
             try
             {
-                this.deliveryContext.SaveChanges();
+                this.DeliveryContext.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -40,6 +68,7 @@
                 throw newEx;
             }
         }
+
         //public void Include(T entity, params Expression<Func<T, object>>[] joinedEntities)
         //{
         //    DbEntityEntry<T> entry = (deliveryContext as DataContext).Entry(entity);
@@ -49,6 +78,5 @@
         //        entry.Reference(join).Load();
         //    }
         //}
-
     }
 }

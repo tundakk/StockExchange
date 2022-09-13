@@ -6,7 +6,7 @@
     using StockExchange.Domain.Model.Responses;
 
     /// <summary>
-    /// Endpoints related to configuring ContentSources.
+    /// Endpoints related to configuring Eod Prices.
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
@@ -15,7 +15,7 @@
         private readonly IEodPriceService eodPriceService;
 
         /// <summary>
-        /// Default constructor for Eod Price controller.
+        /// Default constructor for EodPricesController.
         /// </summary>
         /// <param name="eodPriceService"></param>
         /// <param name="logger"></param>
@@ -52,11 +52,17 @@
         public ActionResult<EodPriceModel> GetById(int id)
         {
             if (id <= 0)
+            {
                 return BadRequest();
+            }
 
             ServiceResponse<EodPriceModel> response = eodPriceService.GetById(id);
+
             if (response.Data == null)
+            {
                 return NoContent();
+            }
+
             if (!response.Success)
             {
                 return Problem(); // Should i return something here?
@@ -64,59 +70,107 @@
 
             return Ok(response.Data);
         }
-        [HttpGet("{stockId}")]
-        public ActionResult<List<EodPriceModel>> GetEodsByStockDate([FromRoute] int stockId, [FromQuery] DateTime? from, [FromQuery] DateTime? to)
-        {
-            if (stockId <= 0 || to.ToString() == "01-01-0001 00:00:00") //i am unsure if this works for every scenario or if its just swagger
-                return BadRequest();
 
-            if (to.ToString() == "01-01-0001 00:00:00") // i am unsure if this works for every scenario or if its just swagger
+        [HttpGet("{stockId}")]
+        public ActionResult<IEnumerable<EodPriceModel>> GetEodsByStockDate([FromRoute] int stockId, [FromQuery] DateTime? from, [FromQuery] DateTime? to)
+        {
+            if (stockId <= 0 || to.ToString() == "01-01-0001 00:00:00")
+            {
                 return BadRequest();
+            }
+
+            // should these be null?
+
+            if (to.ToString() == "01-01-0001 00:00:00")
+            {
+                return BadRequest(to);
+            }
 
             if (from.ToString() == "01-01-0001 00:00:00")
             {
-                return BadRequest();
-
+                return BadRequest(from);
             }
-            ServiceResponse<List<EodPriceModel>> response = eodPriceService.GetEodsByStockIdWhereDate(stockId, from, to);
-            if (response.Data.Count == 0)
+
+            ServiceResponse<IEnumerable<EodPriceModel>> response = eodPriceService.GetEodsByStockIdWhereDate(stockId, from, to);
+
+            if (!response.Success)
+            {
+                return Problem(); // Should i return something here?
+            }
+
+            if (response.Data == null)
+            {
                 return NoContent();
+            }
 
             return Ok(response.Data);
         }
+
         [HttpDelete("{id}")]
         public ActionResult<EodPriceModel> DeleteExchangeById(int id)
         {
             if (id <= 0)
+            {
                 return BadRequest();
+            }
 
             ServiceResponse<EodPriceModel> response = eodPriceService.DeleteById(id);
+
+            if (!response.Success)
+            {
+                return Problem(); // Should i return something here?
+            }
+
             if (response.Data == null)
+            {
                 return NoContent();
+            }
 
             return Ok(response.Data);
         }
+
         [HttpPut]
         public ActionResult<EodPriceModel> UpdateExchange(EodPriceModel eodPriceModel)
         {
             if (eodPriceModel.ID <= 0)
+            {
                 return BadRequest();
+            }
 
             ServiceResponse<EodPriceModel> response = eodPriceService.UpdateEodPrice(eodPriceModel);
+
+            if (!response.Success)
+            {
+                return Problem(); // Should i return something here?
+            }
+
             if (response.Data == null)
+            {
                 return NoContent();
+            }
 
             return Ok(response.Data);
         }
+
         [HttpPost]
         public ActionResult<EodPriceModel> CreateEodPrice(EodPriceModel eodPriceModel)
         {
             if (eodPriceModel.ID <= 0)
+            {
                 return BadRequest();
+            }
 
             ServiceResponse<EodPriceModel> response = eodPriceService.InsertEodPrice(eodPriceModel);
+
+            if (!response.Success)
+            {
+                return Problem(); // Should i return something here?
+            }
+
             if (response.Data == null)
+            {
                 return NoContent();
+            }
 
             return Ok(response.Data);
         }
