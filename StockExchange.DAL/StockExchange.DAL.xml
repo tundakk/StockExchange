@@ -39,6 +39,7 @@
         </member>
         <member name="M:StockExchange.DAL.DataModel.DataContext.SetModified``1(``0)">
             <summary>
+            Sets database state to the modified state.
             I dont know if this method should be part of the implemented datacontext or somewhere else.
             </summary>
             <typeparam name="TEntity"></typeparam>
@@ -255,12 +256,12 @@
         </member>
         <member name="M:StockExchange.DAL.Repos.EodPriceRepo.GetByStockExchangeIdAndDate(System.Int32,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
             <summary>
-            Gets a list of EOD price objects with specific StockSymbolId and a date range.
+            Gets a list of EodPrice objects with specific StockSymbolId and a date range.
             </summary>
             <param name="stockId"></param>
             <param name="startDate"></param>
             <param name="endDate"></param>
-            <returns></returns>
+            <returns>Returns a list of EodPrice objects.</returns>
             <exception cref="T:System.ArgumentException"></exception>
         </member>
         <member name="M:StockExchange.DAL.Repos.EodPriceRepo.Insert(StockExchange.DAL.DataModel.EodPrice)">
@@ -268,7 +269,7 @@
             Inserts an eod price into the database.
             </summary>
             <param name="entity"></param>
-            <returns>returns the populated eod price that was inserted.</returns>
+            <returns>returns the populated EodPrice that was inserted.</returns>
             <exception cref="T:System.ArgumentException"></exception>
         </member>
         <member name="T:StockExchange.DAL.Repos.ExchangeRepo">

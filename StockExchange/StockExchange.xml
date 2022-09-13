@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StockExchange</name>
+    </assembly>
+    <members>
+        <member name="T:StockExchange.Controllers.BaseApiController`1">
+            <summary>
+            BaseApiController.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <remarks>PG: Never directly use this class - inherit from ContentServiceBase or ConfigServiceBase instead!.</remarks>
+        </member>
+        <member name="F:StockExchange.Controllers.BaseApiController`1.Logger">
+            <summary>
+            Reference to ILogger to ensure correct access to logging framework.
+            </summary>
+        </member>
+        <member name="M:StockExchange.Controllers.BaseApiController`1.#ctor(Microsoft.Extensions.Logging.ILogger{`0})">
+            <summary>
+            BaseApicontroller default constructor. Contains ILogger. Injection constructor.
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="T:StockExchange.Controllers.EodPricesController">
+            <summary>
+            Endpoints related to configuring Eod Prices.
+            </summary>
+        </member>
+        <member name="M:StockExchange.Controllers.EodPricesController.#ctor(StockExchange.BLL.Infrastructure.Interfaces.IEodPriceService,Microsoft.Extensions.Logging.ILogger{StockExchange.Controllers.EodPricesController})">
+            <summary>
+            Default constructor for EodPricesController.
+            </summary>
+            <param name="eodPriceService"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:StockExchange.Controllers.EodPricesController.ListAllEodPrices">
+            <summary>
+            Get all EodPriceModel objects from database.
+            </summary>
+            <returns>Returns a list of all EodPriceModel objects.</returns>
+        </member>
+        <member name="M:StockExchange.Controllers.EodPricesController.GetById(System.Int32)">
+            <summary>
+            Gets an EodPriceModel object.
+            </summary>
+            <param name="id">id of an EodPriceModel object.</param>
+            <returns>Returns a populated EodPriceModel object.</returns>
+        </member>
+        <member name="M:StockExchange.Controllers.EodPricesController.GetEodsByStockDate(System.Int32,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Gets a list of eodprice by stockid, from a range of dates.
+            </summary>
+            <param name="stockId"></param>
+            <param name="from"></param>
+            <param name="to"></param>
+            <returns>Returns a populated list of EodPriceModel objects.</returns>
+        </member>
+        <member name="M:StockExchange.Controllers.EodPricesController.DeleteExchangeById(System.Int32)">
+            <summary>
+            Deletes a EodPriceModel object by its ID.
+            </summary>
+            <param name="id">The id of EodPriceModel object.</param>
+            <returns>Returns a EodPriceModel object of the deleted entity.</returns>
+        </member>
+        <member name="M:StockExchange.Controllers.EodPricesController.UpdateExchange(StockExchange.Domain.Model.EodPriceModel)">
+            <summary>
+            Updates an EodPriceModel object.
+            </summary>
+            <param name="eodPriceModel"></param>
+            <returns>Returns the updated EodPriceModel object.</returns>
+        </member>
+        <member name="M:StockExchange.Controllers.EodPricesController.CreateEodPrice(StockExchange.Domain.Model.EodPriceModel)">
+            <summary>
+            Creates an EodPriceModel object.
+            </summary>
+            <param name="eodPriceModel"></param>
+            <returns>Returns the created EodPriceModel object.</returns>
+        </member>
+        <member name="T:StockExchange.Controllers.ExchangesController">
+            <summary>
+            Endpoints related to configuring exchanges.
+            </summary>
+        </member>
+        <member name="M:StockExchange.Controllers.ExchangesController.#ctor(StockExchange.BLL.Infrastructure.Interfaces.IExchangeService,Microsoft.Extensions.Logging.ILogger{StockExchange.Controllers.ExchangesController})">
+            <summary>
+            Default constructor for ExchangesController.
+            </summary>
+            <param name="exchangeService"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:StockExchange.Controllers.ExchangesController.ListAllExchanges">
+            <summary>
+            Get all ExchangeModel objects from database.
+            </summary>
+            <returns>Returns a list of all ExchangeModel objects.</returns>
+        </member>
+        <member name="M:StockExchange.Controllers.ExchangesController.GetExchangeByName(System.String)">
+            <summary>
+            Get all exchanges by name.
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StockExchange.Controllers.ExchangesController.GetById(System.Int32)">
+            <summary>
+            Gets an ExchangeModel object.
+            </summary>
+            <param name="id">id of an ExchangeModel object.</param>
+            <returns>Returns a populated ExchangeModel object.</returns>
+        </member>
+        <member name="M:StockExchange.Controllers.ExchangesController.DeleteExchangeById(System.Int32)">
+            <summary>
+            Deletes a ExchangeModel object by its ID.
+            </summary>
+            <param name="id">The id of Exchange.</param>
+            <returns>Returns a ExchangeModel object of the deleted entity.</returns>
+        </member>
+        <member name="M:StockExchange.Controllers.ExchangesController.UpdateExchange(StockExchange.Domain.Model.ExchangeModel)">
+            <summary>
+            Updates an ExchangeModel object.
+            </summary>
+            <param name="exchangeModel"></param>
+            <returns>Returns the updated ExchangeModel object.</returns>
+        </member>
+        <member name="M:StockExchange.Controllers.ExchangesController.CreateExchange(StockExchange.Domain.Model.ExchangeModel)">
+            <summary>
+            Creates an ExchangeModel object.
+            </summary>
+            <param name="exchangeModel"></param>
+            <returns>Returns the created ExchangeModel object.</returns>
+        </member>
+        <member name="T:StockExchange.Controllers.StockSymbolsController">
+            <summary>
+            Endpoints related to configuring stocksymbols.
+            </summary>
+        </member>
+        <member name="M:StockExchange.Controllers.StockSymbolsController.#ctor(StockExchange.BLL.Infrastructure.Interfaces.IStockSymbolService,Microsoft.Extensions.Logging.ILogger{StockExchange.Controllers.StockSymbolsController})">
+            <summary>
+            Default constructor for StockSymbolsController.
+            </summary>
+            <param name="stockSymbolService"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:StockExchange.Controllers.StockSymbolsController.GetStockSymbolByName(System.String)">
+            <summary>
+            Get a StockSymbol object by name.
+            </summary>
+            <param name="name"></param>
+            <returns>Returns a populated StockSymbol object.</returns>
+        </member>
+        <member name="M:StockExchange.Controllers.StockSymbolsController.GetAllStockSymbols">
+            <summary>
+            Get all StockSymbolModel objects from database.
+            </summary>
+            <returns>Returns ba list of all StockSymbolModel objects.</returns>
+        </member>
+        <member name="M:StockExchange.Controllers.StockSymbolsController.GetById(System.Int32)">
+            <summary>
+            Gets an StockSymbolModel object.
+            </summary>
+            <param name="id">id of an StockSymbolModel object.</param>
+            <returns>Returns a populated StockSymbolModel object.</returns>
+        </member>
+        <member name="M:StockExchange.Controllers.StockSymbolsController.GetStockByExchangeId(System.Int32)">
+            <summary>
+            Get a list of StockSymbolModel objects.
+            </summary>
+            <param name="exchangeId">Parent Id of a StockSymbolModel object.</param>
+            <returns>Returns a list of StockSymbolModel objects of exchangeId.</returns>
+        </member>
+        <member name="M:StockExchange.Controllers.StockSymbolsController.UpdateStockSymbol(StockExchange.Domain.Model.StockSymbolModel)">
+            <summary>
+            Updates an StockSymbolModel object.
+            </summary>
+            <param name="stockSymbolModel"></param>
+            <returns>Returns the updated StockSymbolModel object.</returns>
+        </member>
+        <member name="M:StockExchange.Controllers.StockSymbolsController.CreateStockSymbol(StockExchange.Domain.Model.StockSymbolModel)">
+            <summary>
+            Creates a StockSymbolModel object.
+            </summary>
+            <param name="stockSymbolModel"></param>
+            <returns>Returns the created StockSymbolModel object.</returns>
+        </member>
+        <member name="M:StockExchange.Controllers.StockSymbolsController.DeleteStockSymbolById(System.Int32)">
+            <summary>
+            Deletes a StockSymbolModel object by its ID.
+            </summary>
+            <param name="id">The id of StockSymbolModel object.</param>
+            <returns>Returns a StockSymbolModel object of the deleted entity.</returns>
+        </member>
+        <member name="T:StockExchange.Program">
+            <summary>
+            main class for WebService.
+            </summary>
+        </member>
+        <member name="M:StockExchange.Program.Main(System.String[])">
+            <summary>
+            Entry-point in Application.
+            </summary>
+            <param name="args">Array of Arguments for Startup.</param>
+            <returns>An integer representing the success of the Application.</returns>
+        </member>
+    </members>
+</doc>

@@ -135,6 +135,15 @@
                 };
             }
 
+            if (eodPrices.Count() == 0)
+            {
+                return new ServiceResponse<IEnumerable<EodPriceModel>>()
+                {
+                    Success = false,
+                    Message = "No objects found in that date range",
+                };
+            }
+
             return new ServiceResponse<IEnumerable<EodPriceModel>>()
             {
                 Data = mapper.Map<IEnumerable<EodPriceModel>>(eodPrices),

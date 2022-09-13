@@ -27,9 +27,9 @@
         }
 
         /// <summary>
-        /// List of all Eod Prices.
+        /// Get all EodPriceModel objects from database.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns a list of all EodPriceModel objects.</returns>
         [HttpGet("")]
         public ActionResult<IEnumerable<EodPriceModel>> ListAllEodPrices()
         {
@@ -48,6 +48,11 @@
             return Ok(response.Data);
         }
 
+        /// <summary>
+        /// Gets an EodPriceModel object.
+        /// </summary>
+        /// <param name="id">id of an EodPriceModel object.</param>
+        /// <returns>Returns a populated EodPriceModel object.</returns>
         [HttpGet("{id}")]
         public ActionResult<EodPriceModel> GetById(int id)
         {
@@ -71,7 +76,14 @@
             return Ok(response.Data);
         }
 
-        [HttpGet("{stockId}")]
+        /// <summary>
+        /// Gets a list of eodprice by stockid, from a range of dates.
+        /// </summary>
+        /// <param name="stockId"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <returns>Returns a populated list of EodPriceModel objects.</returns>
+        [HttpGet("bystockid/{stockId}")]
         public ActionResult<IEnumerable<EodPriceModel>> GetEodsByStockDate([FromRoute] int stockId, [FromQuery] DateTime? from, [FromQuery] DateTime? to)
         {
             if (stockId <= 0 || to.ToString() == "01-01-0001 00:00:00")
@@ -106,6 +118,11 @@
             return Ok(response.Data);
         }
 
+        /// <summary>
+        /// Deletes a EodPriceModel object by its ID.
+        /// </summary>
+        /// <param name="id">The id of EodPriceModel object.</param>
+        /// <returns>Returns a EodPriceModel object of the deleted entity.</returns>
         [HttpDelete("{id}")]
         public ActionResult<EodPriceModel> DeleteExchangeById(int id)
         {
@@ -129,6 +146,11 @@
             return Ok(response.Data);
         }
 
+        /// <summary>
+        /// Updates an EodPriceModel object.
+        /// </summary>
+        /// <param name="eodPriceModel"></param>
+        /// <returns>Returns the updated EodPriceModel object.</returns>
         [HttpPut]
         public ActionResult<EodPriceModel> UpdateExchange(EodPriceModel eodPriceModel)
         {
@@ -152,6 +174,11 @@
             return Ok(response.Data);
         }
 
+        /// <summary>
+        /// Creates an EodPriceModel object.
+        /// </summary>
+        /// <param name="eodPriceModel"></param>
+        /// <returns>Returns the created EodPriceModel object.</returns>
         [HttpPost]
         public ActionResult<EodPriceModel> CreateEodPrice(EodPriceModel eodPriceModel)
         {

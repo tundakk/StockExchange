@@ -27,9 +27,9 @@
         }
 
         /// <summary>
-        /// Get all exchanges from database.
+        /// Get all ExchangeModel objects from database.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns a list of all ExchangeModel objects.</returns>
         [HttpGet("")]
         public ActionResult<IEnumerable<ExchangeModel>> ListAllExchanges()
         {
@@ -76,8 +76,13 @@
             return Ok(response.Data);
         }
 
+        /// <summary>
+        /// Gets an ExchangeModel object.
+        /// </summary>
+        /// <param name="id">id of an ExchangeModel object.</param>
+        /// <returns>Returns a populated ExchangeModel object.</returns>
         [HttpGet("{id}")]
-        public ActionResult<ExchangeModel> GetExchangeById(int id)
+        public ActionResult<ExchangeModel> GetById(int id)
         {
             if (id <= 0)
             {
@@ -100,10 +105,10 @@
         }
 
         /// <summary>
-        /// Deletes a Exchange by its ID.
+        /// Deletes a ExchangeModel object by its ID.
         /// </summary>
-        /// <param name="id">The id of Exchange</param>
-        /// <returns></returns>
+        /// <param name="id">The id of Exchange.</param>
+        /// <returns>Returns a ExchangeModel object of the deleted entity.</returns>
         [HttpDelete("{id}")]
         public ActionResult<ExchangeModel> DeleteExchangeById(int id)
         {
@@ -127,6 +132,11 @@
             return Ok(response.Data);
         }
 
+        /// <summary>
+        /// Updates an ExchangeModel object.
+        /// </summary>
+        /// <param name="exchangeModel"></param>
+        /// <returns>Returns the updated ExchangeModel object.</returns>
         [HttpPut]
         public ActionResult<ExchangeModel> UpdateExchange(ExchangeModel exchangeModel)
         {
@@ -150,6 +160,11 @@
             return Ok(response.Data);
         }
 
+        /// <summary>
+        /// Creates an ExchangeModel object.
+        /// </summary>
+        /// <param name="exchangeModel"></param>
+        /// <returns>Returns the created ExchangeModel object.</returns>
         [HttpPost]
         public ActionResult<ExchangeModel> CreateExchange(ExchangeModel exchangeModel)
         {

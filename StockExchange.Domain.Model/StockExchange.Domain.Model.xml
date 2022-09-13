@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StockExchange.Domain.Model</name>
+    </assembly>
+    <members>
+        <member name="T:StockExchange.Domain.Model.EodPriceModel">
+            <summary>
+            Domain model for EodPrice.
+            </summary>
+        </member>
+        <member name="P:StockExchange.Domain.Model.EodPriceModel.ID">
+            <summary>
+            Primary Key of EodPrice object.
+            </summary>
+        </member>
+        <member name="P:StockExchange.Domain.Model.EodPriceModel.Date">
+            <summary>
+            Property. Date created. Default time is datetime.Now.
+            </summary>
+        </member>
+        <member name="P:StockExchange.Domain.Model.EodPriceModel.ClosePrice">
+            <summary>
+            Property. Close price of entity in decimal.
+            </summary>
+        </member>
+        <member name="P:StockExchange.Domain.Model.EodPriceModel.StockSymbolModel">
+            <summary>
+            The parent object.
+            </summary>
+        </member>
+        <member name="P:StockExchange.Domain.Model.EodPriceModel.StockSymbolId">
+            <summary>
+            The ID of the parent StockSymbol.
+            </summary>
+        </member>
+        <member name="T:StockExchange.Domain.Model.ExchangeModel">
+            <summary>
+            Domain model for Exchange.
+            </summary>
+        </member>
+        <member name="P:StockExchange.Domain.Model.ExchangeModel.ID">
+            <summary>
+            Primary Key of Exchange object.
+            </summary>
+        </member>
+        <member name="P:StockExchange.Domain.Model.ExchangeModel.Name">
+            <summary>
+            Human readable name of the Exchange object.
+            </summary>
+        </member>
+        <member name="P:StockExchange.Domain.Model.ExchangeModel.IsActive">
+            <summary>
+            If exchange object is active.
+            </summary>
+        </member>
+        <member name="P:StockExchange.Domain.Model.ExchangeModel.StockSymbols">
+            <summary>
+            List of StockSymbols attached to the exchange object.
+            </summary>
+        </member>
+        <member name="T:StockExchange.Domain.Model.Mapping.MappingProfiles">
+            <summary>
+            Class containing mapping profiles.
+            </summary>
+        </member>
+        <member name="M:StockExchange.Domain.Model.Mapping.MappingProfiles.#ctor">
+            <summary>
+            Automapper setup method.
+            </summary>
+        </member>
+        <member name="T:StockExchange.Domain.Model.Responses.ServiceResponse`1">
+            <summary>
+            This class wraps the object in a property called Data. it has Success and Message as other properties, that is used to send back if the Data property has data in it.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:StockExchange.Domain.Model.Responses.ServiceResponse`1.Data">
+            <summary>
+            Placeholder type intended to be populated by a object or list of objects.
+            </summary>
+        </member>
+        <member name="P:StockExchange.Domain.Model.Responses.ServiceResponse`1.Success">
+            <summary>
+            Set to false if property 'Data' has no data.
+            </summary>
+        </member>
+        <member name="P:StockExchange.Domain.Model.Responses.ServiceResponse`1.Message">
+            <summary>
+            Error message set when Success is false, to give context of the problem.
+            </summary>
+        </member>
+        <member name="T:StockExchange.Domain.Model.StockSymbolModel">
+            <summary>
+            Domain model for StockSymbol.
+            </summary>
+        </member>
+        <member name="P:StockExchange.Domain.Model.StockSymbolModel.ID">
+            <summary>
+            Primary key of StockSymbol object.
+            </summary>
+        </member>
+        <member name="P:StockExchange.Domain.Model.StockSymbolModel.CompanyName">
+            <summary>
+            Human readable name of the company.
+            </summary>
+        </member>
+        <member name="P:StockExchange.Domain.Model.StockSymbolModel.Ticker">
+            <summary>
+            Ticker for the stocksymbol object.
+            </summary>
+        </member>
+        <member name="P:StockExchange.Domain.Model.StockSymbolModel.IsActive">
+            <summary>
+            If stocksymbol object is active.
+            </summary>
+        </member>
+        <member name="P:StockExchange.Domain.Model.StockSymbolModel.ExchangeId">
+            <summary>
+            The ID of the parent Exchange.
+            </summary>
+        </member>
+        <member name="P:StockExchange.Domain.Model.StockSymbolModel.Exchange">
+            <summary>
+            The parent Exchange.
+            </summary>
+        </member>
+        <member name="P:StockExchange.Domain.Model.StockSymbolModel.EodPrices">
+            <summary>
+            List of EOD prices attached to the StockSymbol object.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -27,10 +27,10 @@
         }
 
         /// <summary>
-        ///  
+        /// Get a StockSymbol object by name.
         /// </summary>
         /// <param name="name"></param>
-        /// <returns></returns>
+        /// <returns>Returns a populated StockSymbol object.</returns>
         [HttpGet("name")]
         public ActionResult<StockSymbolModel> GetStockSymbolByName(string name)
         {
@@ -54,6 +54,10 @@
             return Ok(response.Data);
         }
 
+        /// <summary>
+        /// Get all StockSymbolModel objects from database.
+        /// </summary>
+        /// <returns>Returns ba list of all StockSymbolModel objects.</returns>
         [HttpGet("")]
         public ActionResult<IEnumerable<StockSymbolModel>> GetAllStockSymbols()
         {
@@ -72,6 +76,11 @@
             return Ok(response.Data);
         }
 
+        /// <summary>
+        /// Gets an StockSymbolModel object.
+        /// </summary>
+        /// <param name="id">id of an StockSymbolModel object.</param>
+        /// <returns>Returns a populated StockSymbolModel object.</returns>
         [HttpGet("{id}")]
         public ActionResult<StockSymbolModel> GetById(int id)
         {
@@ -95,6 +104,11 @@
             return Ok(response.Data);
         }
 
+        /// <summary>
+        /// Get a list of StockSymbolModel objects.
+        /// </summary>
+        /// <param name="exchangeId">Parent Id of a StockSymbolModel object.</param>
+        /// <returns>Returns a list of StockSymbolModel objects of exchangeId.</returns>
         [HttpGet("stocksymbol/{exchangeId}")]
         public ActionResult<IEnumerable<StockSymbolModel>> GetStockByExchangeId(int exchangeId)
         {
@@ -118,6 +132,11 @@
             return Ok(response.Data);
         }
 
+        /// <summary>
+        /// Updates an StockSymbolModel object.
+        /// </summary>
+        /// <param name="stockSymbolModel"></param>
+        /// <returns>Returns the updated StockSymbolModel object.</returns>
         [HttpPut]
         public ActionResult<StockSymbolModel> UpdateStockSymbol(StockSymbolModel stockSymbolModel)
         {
@@ -141,8 +160,13 @@
             return Ok(response.Data);
         }
 
+        /// <summary>
+        /// Creates a StockSymbolModel object.
+        /// </summary>
+        /// <param name="stockSymbolModel"></param>
+        /// <returns>Returns the created StockSymbolModel object.</returns>
         [HttpPost]
-        public ActionResult<StockSymbolModel> CreateExchange(StockSymbolModel stockSymbolModel)
+        public ActionResult<StockSymbolModel> CreateStockSymbol(StockSymbolModel stockSymbolModel)
         {
             if (stockSymbolModel.ID <= 0)
             {
@@ -164,6 +188,11 @@
             return Ok(response.Data);
         }
 
+        /// <summary>
+        /// Deletes a StockSymbolModel object by its ID.
+        /// </summary>
+        /// <param name="id">The id of StockSymbolModel object.</param>
+        /// <returns>Returns a StockSymbolModel object of the deleted entity.</returns>
         [HttpDelete("{id}")]
         public ActionResult<StockSymbolModel> DeleteStockSymbolById(int id)
         {

@@ -62,12 +62,12 @@
         }
 
         /// <summary>
-        /// Gets a list of EOD price objects with specific StockSymbolId and a date range.
+        /// Gets a list of EodPrice objects with specific StockSymbolId and a date range.
         /// </summary>
         /// <param name="stockId"></param>
         /// <param name="startDate"></param>
         /// <param name="endDate"></param>
-        /// <returns></returns>
+        /// <returns>Returns a list of EodPrice objects.</returns>
         /// <exception cref="ArgumentException"></exception>
         public IEnumerable<EodPrice> GetByStockExchangeIdAndDate(int stockId, DateTime? startDate, DateTime? endDate)
         {
@@ -98,7 +98,7 @@
         /// Inserts an eod price into the database.
         /// </summary>
         /// <param name="entity"></param>
-        /// <returns>returns the populated eod price that was inserted.</returns>
+        /// <returns>returns the populated EodPrice that was inserted.</returns>
         /// <exception cref="ArgumentException"></exception>
         public override EodPrice Insert(EodPrice entity)
         {

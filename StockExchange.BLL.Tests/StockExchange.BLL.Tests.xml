@@ -4,10 +4,5 @@
         <name>StockExchange.BLL.Tests</name>
     </assembly>
     <members>
-        <member name="T:StockExchange.BLL.Tests.Class1">
-            <summary>
-            
-            </summary>
-        </member>
     </members>
 </doc>

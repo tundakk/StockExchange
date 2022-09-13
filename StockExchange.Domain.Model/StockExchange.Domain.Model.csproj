@@ -18,12 +18,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\StockExchange.DAL\StockExchange.DAL.csproj" />
-  </ItemGroup>
 	<ItemGroup>
 		<AdditionalFiles Include="..\stylecop.json" Link="stylecop.json" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\StockExchange.DAL\StockExchange.DAL.csproj" />
 	</ItemGroup>
 	<PropertyGroup>
 		<CodeAnalysisRuleSet>..\StyleCop.Ruleset</CodeAnalysisRuleSet>

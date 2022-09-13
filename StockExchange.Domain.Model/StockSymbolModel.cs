@@ -28,7 +28,6 @@
         /// </summary>
         public bool IsActive { get; set; } = true; // true when object is initialized ?
 
-
         /// <summary>
         /// The ID of the parent Exchange.
         /// </summary>
