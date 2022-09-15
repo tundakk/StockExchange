@@ -9,13 +9,13 @@
     /// <summary>
     /// Repository class for stocksymbol.
     /// </summary>
-    public class StockSymbolsRepo : BaseRepo<StockSymbol>, IStockSymbolsRepo
+    public class StockSymbolRepo : BaseRepo<StockSymbol>, IStockSymbolRepo
     {
         /// <summary>
         /// Default constructor for StockSymbolsRepo.
         /// </summary>
-        /// <param name="deliveryContext">Public readonly property on the BaseRepo class.</param>
-        public StockSymbolsRepo(DataContext deliveryContext) : base(deliveryContext)
+        /// <param name="dataContext">Public readonly property on the BaseRepo class.</param>
+        public StockSymbolRepo(DataContext dataContext) : base(dataContext)
         {
         }
 

@@ -4,5 +4,20 @@
         <name>StockExchange.BLL.Tests</name>
     </assembly>
     <members>
+        <member name="T:StockExchange.BLL.Tests.EodPriceServiceTests">
+            <summary>
+            Tests for EodPriceService.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.EodPriceServiceTests.Setup">
+            <summary>
+            Setup.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.EodPriceServiceTests.GetById_WithValidEodPriceID_ShouldReturnSuccessTrue">
+            <summary>
+            Test with valid instance id.
+            </summary>
+        </member>
     </members>
 </doc>

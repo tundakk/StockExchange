@@ -361,44 +361,44 @@
             <param name="name"></param>
             <returns>Returns a populated Exchange object.</returns>
         </member>
-        <member name="T:StockExchange.DAL.Repos.Interface.IStockSymbolsRepo">
+        <member name="T:StockExchange.DAL.Repos.Interface.IStockSymbolRepo">
             <summary>
             Interface for repository for StockSymbolsRepo.
             </summary>
         </member>
-        <member name="M:StockExchange.DAL.Repos.Interface.IStockSymbolsRepo.GetById(System.Int32)">
+        <member name="M:StockExchange.DAL.Repos.Interface.IStockSymbolRepo.GetById(System.Int32)">
             <summary>
             Get StockSymbol object by ID.
             </summary>
             <param name="id"></param>
             <returns>Returns a populated StockSymbol object.</returns>
         </member>
-        <member name="M:StockExchange.DAL.Repos.Interface.IStockSymbolsRepo.GetByName(System.String)">
+        <member name="M:StockExchange.DAL.Repos.Interface.IStockSymbolRepo.GetByName(System.String)">
             <summary>
             Get StockSymbol object by name property.
             </summary>
             <param name="name"></param>
             <returns>Returns a populated StockSymbol object.</returns>
         </member>
-        <member name="M:StockExchange.DAL.Repos.Interface.IStockSymbolsRepo.GetListOfStockByExchangeId(System.Int32)">
+        <member name="M:StockExchange.DAL.Repos.Interface.IStockSymbolRepo.GetListOfStockByExchangeId(System.Int32)">
             <summary>
             Get StockSymbol object by name property.
             </summary>
             <param name="exchangeId"></param>
             <returns>Returns a populated List of stocksymbol objects.</returns>
         </member>
-        <member name="T:StockExchange.DAL.Repos.StockSymbolsRepo">
+        <member name="T:StockExchange.DAL.Repos.StockSymbolRepo">
             <summary>
             Repository class for stocksymbol.
             </summary>
         </member>
-        <member name="M:StockExchange.DAL.Repos.StockSymbolsRepo.#ctor(StockExchange.DAL.DataModel.DataContext)">
+        <member name="M:StockExchange.DAL.Repos.StockSymbolRepo.#ctor(StockExchange.DAL.DataModel.DataContext)">
             <summary>
             Default constructor for StockSymbolsRepo.
             </summary>
-            <param name="deliveryContext">Public readonly property on the BaseRepo class.</param>
+            <param name="dataContext">Public readonly property on the BaseRepo class.</param>
         </member>
-        <member name="M:StockExchange.DAL.Repos.StockSymbolsRepo.Delete(StockExchange.DAL.DataModel.StockSymbol)">
+        <member name="M:StockExchange.DAL.Repos.StockSymbolRepo.Delete(StockExchange.DAL.DataModel.StockSymbol)">
             <summary>
             Deletes a stocksymbol.
             </summary>
@@ -406,13 +406,13 @@
             <returns>returns the stocksymbol that was deleted.</returns>
             <exception cref="T:System.ArgumentException"></exception>
         </member>
-        <member name="M:StockExchange.DAL.Repos.StockSymbolsRepo.GetAll">
+        <member name="M:StockExchange.DAL.Repos.StockSymbolRepo.GetAll">
             <summary>
             Gets all entities from stocksymbol table.
             </summary>
             <returns>returns a populated list of type StockSymbol, of all entities in the database.</returns>
         </member>
-        <member name="M:StockExchange.DAL.Repos.StockSymbolsRepo.GetByName(System.String)">
+        <member name="M:StockExchange.DAL.Repos.StockSymbolRepo.GetByName(System.String)">
             <summary>
             It gets an object of type StockSymbol from repo by name.
             </summary>
@@ -420,7 +420,7 @@
             <returns>a populated StockSymbol object.</returns>
             <exception cref="T:System.ArgumentException"></exception>
         </member>
-        <member name="M:StockExchange.DAL.Repos.StockSymbolsRepo.GetById(System.Int32)">
+        <member name="M:StockExchange.DAL.Repos.StockSymbolRepo.GetById(System.Int32)">
             <summary>
             Get StockSymbol object by ID.
             </summary>
@@ -428,7 +428,7 @@
             <returns>Returns a populated StockSymbol object by matching ID.</returns>
             <exception cref="T:System.ArgumentException"></exception>
         </member>
-        <member name="M:StockExchange.DAL.Repos.StockSymbolsRepo.GetListOfStockByExchangeId(System.Int32)">
+        <member name="M:StockExchange.DAL.Repos.StockSymbolRepo.GetListOfStockByExchangeId(System.Int32)">
             <summary>
             Gets a list of StockSymbol by exchangeId.
             </summary>
@@ -436,7 +436,7 @@
             <returns>Returns a list of StockSymbol all entities with exchangeId set to input.</returns>
             <exception cref="T:System.ArgumentException"></exception>
         </member>
-        <member name="M:StockExchange.DAL.Repos.StockSymbolsRepo.Insert(StockExchange.DAL.DataModel.StockSymbol)">
+        <member name="M:StockExchange.DAL.Repos.StockSymbolRepo.Insert(StockExchange.DAL.DataModel.StockSymbol)">
             <summary>
             Inserts a stocksymbol into the database.
             </summary>

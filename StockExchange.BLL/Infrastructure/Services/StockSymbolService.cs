@@ -14,7 +14,7 @@
     /// </summary>
     public class StockSymbolService : BaseService<StockSymbolService>, IStockSymbolService
     {
-        private readonly IStockSymbolsRepo stockSymbolsRepo;
+        private readonly IStockSymbolRepo stockSymbolsRepo;
         private readonly IMapper mapper;
 
         /// <summary>
@@ -23,7 +23,7 @@
         /// <param name="stockSymbolsRepo"></param>
         /// <param name="mapper"></param>
         /// <param name="logger"></param>
-        public StockSymbolService(IStockSymbolsRepo stockSymbolsRepo, IMapper mapper, ILogger<StockSymbolService> logger) : base(logger)
+        public StockSymbolService(IStockSymbolRepo stockSymbolsRepo, IMapper mapper, ILogger<StockSymbolService> logger) : base(logger)
         {
             this.stockSymbolsRepo = stockSymbolsRepo;
             this.mapper = mapper;

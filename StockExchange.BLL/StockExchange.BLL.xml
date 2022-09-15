@@ -283,7 +283,7 @@
             StockSymbol Service.
             </summary>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Services.StockSymbolService.#ctor(StockExchange.DAL.Repos.Interface.IStockSymbolsRepo,AutoMapper.IMapper,Microsoft.Extensions.Logging.ILogger{StockExchange.BLL.Infrastructure.Services.StockSymbolService})">
+        <member name="M:StockExchange.BLL.Infrastructure.Services.StockSymbolService.#ctor(StockExchange.DAL.Repos.Interface.IStockSymbolRepo,AutoMapper.IMapper,Microsoft.Extensions.Logging.ILogger{StockExchange.BLL.Infrastructure.Services.StockSymbolService})">
             <summary>
             Initializes a new instance of the <see cref="T:StockExchange.BLL.Infrastructure.Services.StockSymbolService"/> class.
             </summary>

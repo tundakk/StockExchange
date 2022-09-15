@@ -36,7 +36,7 @@ namespace StockExchange
             //builder.Services.RegisterType<>().As<BaseRepo>(); //i tried to replicate the DI of OTD
             //builder.Services.AddScoped<IBaseRepo, BaseRepo>(); //should i scope the base classes?
             builder.Services.AddScoped<IExchangeRepo, ExchangeRepo>();
-            builder.Services.AddScoped<IStockSymbolsRepo, StockSymbolsRepo>();
+            builder.Services.AddScoped<IStockSymbolRepo, StockSymbolRepo>();
             builder.Services.AddScoped<IEodPriceRepo, EodPriceRepo>();
             builder.Services.AddScoped<IExchangeService, ExchangeService>();
             builder.Services.AddScoped<IStockSymbolService, StockSymbolService>();

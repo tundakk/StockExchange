@@ -4,5 +4,21 @@
         <name>StockExchange.DAL.Tests</name>
     </assembly>
     <members>
+        <member name="T:StockExchange.DAL.Tests.BaseTests`1">
+            <summary>
+            Mocked BaseTest class.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:StockExchange.DAL.Tests.BaseTests`1.LoggerMock">
+            <summary>
+            Return  Logger Mock for each test.
+            </summary>
+        </member>
+        <member name="T:StockExchange.DAL.Tests.StockSymbolRepoTest">
+            <summary>
+            SockSymbolRepo tests.
+            </summary>
+        </member>
     </members>
 </doc>

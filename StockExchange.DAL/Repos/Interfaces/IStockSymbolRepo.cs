@@ -6,7 +6,7 @@
     /// <summary>
     /// Interface for repository for StockSymbolsRepo.
     /// </summary>
-    public interface IStockSymbolsRepo : IBaseRepo<StockSymbol>
+    public interface IStockSymbolRepo : IBaseRepo<StockSymbol>
     {
         //GET
 
