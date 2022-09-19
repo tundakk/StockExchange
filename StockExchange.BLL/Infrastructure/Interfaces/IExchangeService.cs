@@ -22,7 +22,7 @@
         /// It gets a list of all the Exchanges in the system.
         /// </summary>
         /// <returns>Returns a list of populated ExchangeModel.</returns>
-        ServiceResponse<IEnumerable<ExchangeModel>> GetAllExchanges();
+        ServiceResponse<IEnumerable<ExchangeModel>> GetAll();
 
         /// <summary>
         /// It gets a particular ExchangeModel object available in the system.
@@ -38,7 +38,7 @@
         /// </summary>
         /// <param name="exchangeModel"></param>
         /// <returns>Returns a populated ExchangeModel object.</returns>
-        ServiceResponse<ExchangeModel> UpdateExchange(ExchangeModel exchangeModel);
+        ServiceResponse<ExchangeModel> Update(ExchangeModel exchangeModel);
 
         //POST
 
@@ -47,7 +47,7 @@
         /// </summary>
         /// <param name="exchangeModel"></param>
         /// <returns>Returns a populated ExchangeModel.</returns>
-        ServiceResponse<ExchangeModel> InsertExchange(ExchangeModel exchangeModel);
+        ServiceResponse<ExchangeModel> Insert(ExchangeModel exchangeModel);
 
         //DELETE
 
@@ -56,6 +56,6 @@
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Returns a populated ExchangeModel object matching the deleted entity.</returns>
-        ServiceResponse<ExchangeModel> DeleteById(int id);
+        ServiceResponse<ExchangeModel> Delete(int id);
     }
 }

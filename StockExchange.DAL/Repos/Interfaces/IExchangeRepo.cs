@@ -15,14 +15,14 @@
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Returns a populated Exchange object.</returns>
-        Exchange? GetById(int id);
+        Exchange GetById(int id);
 
         /// <summary>
         /// Get Exchange object by name property.
         /// </summary>
         /// <param name="name"></param>
         /// <returns>Returns a populated Exchange object.</returns>
-        Exchange? GetByName(string name);
+        Exchange GetByName(string name);
 
         //PUT
         //POST

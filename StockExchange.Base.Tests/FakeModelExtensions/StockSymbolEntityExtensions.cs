@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using StockExchange.DAL.DataModel;
+    using StockExchange.Domain.Model;
 
     /// <summary>
     /// StockSymbol entity extensions class.
@@ -51,6 +52,22 @@
         public static StockSymbol Build()
         {
             return new StockSymbol
+            {
+                ID = 21,
+                CompanyName = "Straton Oakmount",
+                Ticker = new System.DateTime(2017, 5, 6, 7, 8, 9),
+                IsActive = false,
+                ExchangeId = 14,
+            };
+        }
+
+        /// <summary>
+        /// Builds an StockSymbolModel object.
+        /// </summary>
+        /// <returns>Returns a mock StockSymbolModel object.</returns>
+        public static StockSymbolModel BuildDomainModel()
+        {
+            return new StockSymbolModel
             {
                 ID = 21,
                 CompanyName = "Straton Oakmount",

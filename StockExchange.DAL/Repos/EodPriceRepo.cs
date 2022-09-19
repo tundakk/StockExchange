@@ -14,8 +14,8 @@
         /// <summary>
         /// Default constructor for EodPriceRepo.
         /// </summary>
-        /// <param name="deliveryContext">Public readonly property on the BaseRepo class.</param>
-        public EodPriceRepo(DataContext deliveryContext) : base(deliveryContext)
+        /// <param name="dataContext">Public readonly property on the BaseRepo class.</param>
+        public EodPriceRepo(DataContext dataContext) : base(dataContext)
         {
         }
 
@@ -32,7 +32,7 @@
                 throw new ArgumentException("Delete - EodPrice must not be null");
             }
 
-            DeliveryContext.EodPrices.Remove(entity);
+            DataContext.EodPrices.Remove(entity);
             return entity;
         }
 
@@ -42,7 +42,7 @@
         /// <returns>returns a populated list of type EodPrice, of all entities in the database.</returns>
         public override IQueryable<EodPrice> GetAll()
         {
-            return DeliveryContext.EodPrices;
+            return DataContext.EodPrices;
         }
 
         /// <summary>
@@ -51,14 +51,22 @@
         /// <param name="id"></param>
         /// <returns>Returns a populated EodPrice object by matching ID.</returns>
         /// <exception cref="ArgumentException"></exception>
-        public EodPrice? GetById(int id)
+        public EodPrice GetById(int id)
         {
             if (id <= 0)
             {
                 throw new ArgumentException("GetById - id must be greater than 0");
             }
 
-            return DeliveryContext.EodPrices.Find(id);
+            try
+            {
+                return DataContext.EodPrices.Find(id);
+            }
+            catch (Exception ex)
+            {
+                return DataContext.EodPrices.Find(null);
+                throw new ArgumentException("GetById -", ex.Message);
+            }
         }
 
         /// <summary>
@@ -69,7 +77,7 @@
         /// <param name="endDate"></param>
         /// <returns>Returns a list of EodPrice objects.</returns>
         /// <exception cref="ArgumentException"></exception>
-        public IEnumerable<EodPrice> GetByStockExchangeIdAndDate(int stockId, DateTime? startDate, DateTime? endDate)
+        public IEnumerable<EodPrice> GetByStockIdAndDate(int stockId, DateTime? startDate, DateTime? endDate)
         {
             if (startDate == null)
             {
@@ -91,7 +99,7 @@
                 throw new ArgumentException("GetByStockExchangeIdAndDate - ID must be greater than 0");
             }
 
-            return DeliveryContext.EodPrices.Where(s => s.StockSymbolId == stockId && s.Date < endDate && s.Date > startDate);
+            return DataContext.EodPrices.Where(s => s.StockSymbolId == stockId && s.Date < endDate && s.Date > startDate);
         }
 
         /// <summary>
@@ -107,7 +115,7 @@
                 throw new ArgumentException("Insert - EodPrice must not be null");
             }
 
-            DeliveryContext.EodPrices.Add(entity);
+            DataContext.EodPrices.Add(entity);
 
             return entity;
         }

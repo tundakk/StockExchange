@@ -30,7 +30,7 @@
         /// The parent object.
         /// </summary>
         [Required]
-        public StockSymbol? StockSymbol { get; set; } // n-1
+        public StockSymbol StockSymbol { get; set; } // n-1
 
         /// <summary>
         /// The ID of the parent StockSymbol.

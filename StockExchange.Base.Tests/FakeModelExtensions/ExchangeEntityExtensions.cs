@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using StockExchange.DAL.DataModel;
+    using StockExchange.Domain.Model;
 
     /// <summary>
     /// Exchange entity extensions class.
@@ -40,12 +41,26 @@
         }
 
         /// <summary>
-        /// Builds a Exchange object.
+        /// Builds an Exchange object.
         /// </summary>
         /// <returns>Returns a mock Exchange object.</returns>
         public static Exchange Build()
         {
             return new Exchange
+            {
+                ID = 52,
+                Name = "Dummy Exchange",
+                IsActive = true,
+            };
+        }
+
+        /// <summary>
+        /// Builds an ExchangeModel object.
+        /// </summary>
+        /// <returns>Returns a mock ExchangeModel object.</returns>
+        public static ExchangeModel BuildDomainModel()
+        {
+            return new ExchangeModel
             {
                 ID = 52,
                 Name = "Dummy Exchange",

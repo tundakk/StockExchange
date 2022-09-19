@@ -61,7 +61,7 @@
         [HttpGet("")]
         public ActionResult<IEnumerable<StockSymbolModel>> GetAllStockSymbols()
         {
-            ServiceResponse<IEnumerable<StockSymbolModel>> response = stockSymbolService.GetAllStockSymbols();
+            ServiceResponse<IEnumerable<StockSymbolModel>> response = stockSymbolService.GetAll();
 
             if (!response.Success)
             {
@@ -145,7 +145,7 @@
                 return BadRequest();
             }
 
-            ServiceResponse<StockSymbolModel> response = stockSymbolService.UpdateStockSymbol(stockSymbolModel);
+            ServiceResponse<StockSymbolModel> response = stockSymbolService.Update(stockSymbolModel);
 
             if (!response.Success)
             {
@@ -173,7 +173,7 @@
                 return BadRequest();
             }
 
-            ServiceResponse<StockSymbolModel> response = stockSymbolService.InsertStockSymbol(stockSymbolModel);
+            ServiceResponse<StockSymbolModel> response = stockSymbolService.Insert(stockSymbolModel);
 
             if (!response.Success)
             {
@@ -201,7 +201,7 @@
                 return BadRequest();
             }
 
-            ServiceResponse<StockSymbolModel> response = stockSymbolService.DeleteById(id);
+            ServiceResponse<StockSymbolModel> response = stockSymbolService.Delete(id);
 
             if (!response.Success)
             {

@@ -1,12 +1,9 @@
 ﻿namespace StockExchange.DAL.Tests
 {
-    using NUnit.Framework;
-
     /// <summary>
-    /// SockSymbolRepo tests.
+    /// StockSymbol repository tests.
     /// </summary>
-    [TestFixture]
-    public class StockSymbolRepoTest
+    public class StockSymbolRepoTests
     {
         //private Mock<DataContext>? mockDataContext;
 

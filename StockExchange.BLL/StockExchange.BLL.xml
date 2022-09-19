@@ -9,7 +9,7 @@
             EodPrice Service interface.
             </summary>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IEodPriceService.GetAllEodPrices">
+        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IEodPriceService.GetAll">
             <summary>
             It gets a list of all the Eod prices in the system.
             </summary>
@@ -31,21 +31,21 @@
             <param name="id"></param>
             <returns>Returns a populated EodPriceModel object.</returns>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IEodPriceService.DeleteById(System.Int32)">
+        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IEodPriceService.Delete(System.Int32)">
             <summary>
             A method for deleting an entity from database.
             </summary>
             <param name="id"></param>
             <returns>Returns a populated EodPriceModel object matching the deleted entity.</returns>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IEodPriceService.InsertEodPrice(StockExchange.Domain.Model.EodPriceModel)">
+        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IEodPriceService.Insert(StockExchange.Domain.Model.EodPriceModel)">
             <summary>
             Inserts a EodPriceModel object into the database.
             </summary>
             <param name="eodPriceModel"></param>
             <returns>Returns a populated EodPriceModel object.</returns>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IEodPriceService.UpdateEodPrice(StockExchange.Domain.Model.EodPriceModel)">
+        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IEodPriceService.Update(StockExchange.Domain.Model.EodPriceModel)">
             <summary>
             Updates a EodPriceModel object in the database.
             </summary>
@@ -64,7 +64,7 @@
             <param name="name"></param>
             <returns>Returns a populated EodPriceModel object.</returns>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IExchangeService.GetAllExchanges">
+        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IExchangeService.GetAll">
             <summary>
             It gets a list of all the Exchanges in the system.
             </summary>
@@ -77,21 +77,21 @@
             <param name="id"></param>
             <returns>Returns a populated ExchangeModel object.</returns>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IExchangeService.UpdateExchange(StockExchange.Domain.Model.ExchangeModel)">
+        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IExchangeService.Update(StockExchange.Domain.Model.ExchangeModel)">
             <summary>
             Updates a ExchangeModel object in the database.
             </summary>
             <param name="exchangeModel"></param>
             <returns>Returns a populated ExchangeModel object.</returns>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IExchangeService.InsertExchange(StockExchange.Domain.Model.ExchangeModel)">
+        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IExchangeService.Insert(StockExchange.Domain.Model.ExchangeModel)">
             <summary>
             Inserts a ExchangeModel object into the database.
             </summary>
             <param name="exchangeModel"></param>
             <returns>Returns a populated ExchangeModel.</returns>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IExchangeService.DeleteById(System.Int32)">
+        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IExchangeService.Delete(System.Int32)">
             <summary>
             A method for deleting an entity from database.
             </summary>
@@ -103,7 +103,7 @@
             StockSymbol Service interface.
             </summary>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IStockSymbolService.GetAllStockSymbols">
+        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IStockSymbolService.GetAll">
             <summary>
             It gets a list of all the StockSymbols in the system.
             </summary>
@@ -130,21 +130,21 @@
             <param name="exchangeId"></param>
             <returns>Returns a populated list of StockSymbolModel objects.</returns>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IStockSymbolService.UpdateStockSymbol(StockExchange.Domain.Model.StockSymbolModel)">
+        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IStockSymbolService.Update(StockExchange.Domain.Model.StockSymbolModel)">
             <summary>
             Updates a StockSymbolModel object in the database.
             </summary>
             <param name="stockSymbolModel"></param>
             <returns>Returns a populated StockSymbolModel object.</returns>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IStockSymbolService.InsertStockSymbol(StockExchange.Domain.Model.StockSymbolModel)">
+        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IStockSymbolService.Insert(StockExchange.Domain.Model.StockSymbolModel)">
             <summary>
             Inserts a StockSymbolModel object into the database.
             </summary>
             <param name="stockSymbolModel"></param>
             <returns>Returns a populated StockSymbolModel object.</returns>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IStockSymbolService.DeleteById(System.Int32)">
+        <member name="M:StockExchange.BLL.Infrastructure.Interfaces.IStockSymbolService.Delete(System.Int32)">
             <summary>
             A method for deleting an entity from database.
             </summary>
@@ -181,7 +181,7 @@
             <param name="mapper"></param>
             <param name="logger"></param>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Services.EodPriceService.GetAllEodPrices">
+        <member name="M:StockExchange.BLL.Infrastructure.Services.EodPriceService.GetAll">
             <summary>
             It gets a IEnumerable of all the EodPriceModel in the system.
             </summary>
@@ -203,21 +203,21 @@
             <param name="to">To a specific date.</param>
             <returns>A list of populated EodPriceModel. </returns>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Services.EodPriceService.InsertEodPrice(StockExchange.Domain.Model.EodPriceModel)">
+        <member name="M:StockExchange.BLL.Infrastructure.Services.EodPriceService.Insert(StockExchange.Domain.Model.EodPriceModel)">
             <summary>
             It inserts a particular EodPriceModel object.
             </summary>
             <param name="eodPriceModel"></param>
             <returns>returns a populated EodPriceModel object.</returns>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Services.EodPriceService.UpdateEodPrice(StockExchange.Domain.Model.EodPriceModel)">
+        <member name="M:StockExchange.BLL.Infrastructure.Services.EodPriceService.Update(StockExchange.Domain.Model.EodPriceModel)">
             <summary>
             It updates a particular EodPriceModel object.
             </summary>
             <param name="eodPriceModel"></param>
             <returns>Returns the update EodPriceModel object.</returns>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Services.EodPriceService.DeleteById(System.Int32)">
+        <member name="M:StockExchange.BLL.Infrastructure.Services.EodPriceService.Delete(System.Int32)">
             <summary>
             It deletes a particular EodPriceModel object by id.
             </summary>
@@ -237,7 +237,7 @@
             <param name="mapper"></param>
             <param name="logger"></param>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Services.ExchangeService.GetAllExchanges">
+        <member name="M:StockExchange.BLL.Infrastructure.Services.ExchangeService.GetAll">
             <summary>
             It gets a IEnumerable of all the Exchanges in the system.
             </summary>
@@ -257,21 +257,21 @@
             <param name="name"></param>
             <returns>returns a populated exhange object.</returns>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Services.ExchangeService.InsertExchange(StockExchange.Domain.Model.ExchangeModel)">
+        <member name="M:StockExchange.BLL.Infrastructure.Services.ExchangeService.Insert(StockExchange.Domain.Model.ExchangeModel)">
             <summary>
             It inserts a particular exchange object.
             </summary>
             <param name="exchangeModel"></param>
             <returns>returns a populated exhange object.</returns>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Services.ExchangeService.UpdateExchange(StockExchange.Domain.Model.ExchangeModel)">
+        <member name="M:StockExchange.BLL.Infrastructure.Services.ExchangeService.Update(StockExchange.Domain.Model.ExchangeModel)">
             <summary>
             It updates a particular ExchangeModel object.
             </summary>
             <param name="exchangeModel"></param>
             <returns>Returns the updated ExchangeModel object.</returns>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Services.ExchangeService.DeleteById(System.Int32)">
+        <member name="M:StockExchange.BLL.Infrastructure.Services.ExchangeService.Delete(System.Int32)">
             <summary>
             It deletes a particular exchange object by id.
             </summary>
@@ -305,27 +305,27 @@
             <param name="name"></param>
             <returns>returns a populated StockSymbolModel object.</returns>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Services.StockSymbolService.GetAllStockSymbols">
+        <member name="M:StockExchange.BLL.Infrastructure.Services.StockSymbolService.GetAll">
             <summary>
             It gets a IEnumerable of all the StockSymbolModel in the system.
             </summary>
             <returns> Returns an IEnumerable of populated StockSymbolModel.</returns>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Services.StockSymbolService.InsertStockSymbol(StockExchange.Domain.Model.StockSymbolModel)">
+        <member name="M:StockExchange.BLL.Infrastructure.Services.StockSymbolService.Insert(StockExchange.Domain.Model.StockSymbolModel)">
             <summary>
             It inserts a particular StockSymbolModel object.
             </summary>
             <param name="stockSymbolModel"></param>
             <returns>returns a populated StockSymbolModel object.</returns>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Services.StockSymbolService.UpdateStockSymbol(StockExchange.Domain.Model.StockSymbolModel)">
+        <member name="M:StockExchange.BLL.Infrastructure.Services.StockSymbolService.Update(StockExchange.Domain.Model.StockSymbolModel)">
             <summary>
             It updates a particular StockSymbolModel object.
             </summary>
             <param name="stockSymbolModel"></param>
             <returns>Returns the updated StockSymbolModel object.</returns>
         </member>
-        <member name="M:StockExchange.BLL.Infrastructure.Services.StockSymbolService.DeleteById(System.Int32)">
+        <member name="M:StockExchange.BLL.Infrastructure.Services.StockSymbolService.Delete(System.Int32)">
             <summary>
             It deletes a particular StockSymbolModel object by id.
             </summary>

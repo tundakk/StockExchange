@@ -12,15 +12,15 @@
         /// <summary>
         /// Public readonly property used as DI for classes.
         /// </summary>
-        public readonly DataContext DeliveryContext;
+        public readonly DataContext DataContext;
 
         /// <summary>
         /// default constructor for the BaseRepo class.
         /// </summary>
-        /// <param name="deliveryContext"></param>
-        public BaseRepo(DataContext deliveryContext)
+        /// <param name="dataContext"></param>
+        public BaseRepo(DataContext dataContext)
         {
-            this.DeliveryContext = deliveryContext;
+            this.DataContext = dataContext;
         }
 
         /// <summary>
@@ -49,7 +49,7 @@
                 throw new ArgumentException("Update - Entity must not be null");
             }
 
-            DeliveryContext.SetModified(entity);
+            DataContext.SetModified(entity);
             return entity;
         }
 
@@ -60,7 +60,7 @@
         {
             try
             {
-                this.DeliveryContext.SaveChanges();
+                this.DataContext.SaveChanges();
             }
             catch (Exception ex)
             {

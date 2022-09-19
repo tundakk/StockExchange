@@ -15,14 +15,14 @@
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Returns a populated StockSymbol object.</returns>
-        StockSymbol? GetById(int id);
+        StockSymbol GetById(int id);
 
         /// <summary>
         /// Get StockSymbol object by name property.
         /// </summary>
         /// <param name="name"></param>
         /// <returns>Returns a populated StockSymbol object.</returns>
-        StockSymbol? GetByName(string name);
+        StockSymbol GetByName(string name);
 
         /// <summary>
         /// Get StockSymbol object by name property.

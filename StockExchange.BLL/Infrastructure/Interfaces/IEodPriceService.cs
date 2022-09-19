@@ -14,7 +14,7 @@
         /// It gets a list of all the Eod prices in the system.
         /// </summary>
         /// <returns>Returns a list of populated EodPriceModel.</returns>
-        ServiceResponse<IEnumerable<EodPriceModel>> GetAllEodPrices();
+        ServiceResponse<IEnumerable<EodPriceModel>> GetAll();
 
         /// <summary>
         /// It gets a list of eodprice by id, from a range of dates.
@@ -39,7 +39,7 @@
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Returns a populated EodPriceModel object matching the deleted entity.</returns>
-        ServiceResponse<EodPriceModel> DeleteById(int id);
+        ServiceResponse<EodPriceModel> Delete(int id);
 
         // POST
 
@@ -48,7 +48,7 @@
         /// </summary>
         /// <param name="eodPriceModel"></param>
         /// <returns>Returns a populated EodPriceModel object.</returns>
-        ServiceResponse<EodPriceModel> InsertEodPrice(EodPriceModel eodPriceModel);
+        ServiceResponse<EodPriceModel> Insert(EodPriceModel eodPriceModel);
 
         // PUT
 
@@ -57,6 +57,6 @@
         /// </summary>
         /// <param name="eodPriceModel"></param>
         /// <returns>Returns a populated EodPriceModel object.</returns>
-        ServiceResponse<EodPriceModel> UpdateEodPrice(EodPriceModel eodPriceModel);
+        ServiceResponse<EodPriceModel> Update(EodPriceModel eodPriceModel);
     }
 }

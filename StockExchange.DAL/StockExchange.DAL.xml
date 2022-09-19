@@ -16,6 +16,11 @@
             </summary>
             <param name="options"></param>
         </member>
+        <member name="M:StockExchange.DAL.DataModel.DataContext.#ctor">
+            <summary>
+            test constructor. Im unsure if this breaks anything. created because moq is not good with literal classes. it wants an empty constructor implemented.
+            </summary>
+        </member>
         <member name="M:StockExchange.DAL.DataModel.DataContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
             dataseeding. On model creation it seeds 3 rows in every table.
@@ -146,7 +151,7 @@
             </summary>
             <typeparam name="T"></typeparam>
         </member>
-        <member name="F:StockExchange.DAL.Repos.Base.BaseRepo`1.DeliveryContext">
+        <member name="F:StockExchange.DAL.Repos.Base.BaseRepo`1.DataContext">
             <summary>
             Public readonly property used as DI for classes.
             </summary>
@@ -155,7 +160,7 @@
             <summary>
             default constructor for the BaseRepo class.
             </summary>
-            <param name="deliveryContext"></param>
+            <param name="dataContext"></param>
         </member>
         <member name="M:StockExchange.DAL.Repos.Base.BaseRepo`1.Delete(`0)">
             <summary>
@@ -230,7 +235,7 @@
             <summary>
             Default constructor for EodPriceRepo.
             </summary>
-            <param name="deliveryContext">Public readonly property on the BaseRepo class.</param>
+            <param name="dataContext">Public readonly property on the BaseRepo class.</param>
         </member>
         <member name="M:StockExchange.DAL.Repos.EodPriceRepo.Delete(StockExchange.DAL.DataModel.EodPrice)">
             <summary>
@@ -254,7 +259,7 @@
             <returns>Returns a populated EodPrice object by matching ID.</returns>
             <exception cref="T:System.ArgumentException"></exception>
         </member>
-        <member name="M:StockExchange.DAL.Repos.EodPriceRepo.GetByStockExchangeIdAndDate(System.Int32,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+        <member name="M:StockExchange.DAL.Repos.EodPriceRepo.GetByStockIdAndDate(System.Int32,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
             <summary>
             Gets a list of EodPrice objects with specific StockSymbolId and a date range.
             </summary>
@@ -281,7 +286,7 @@
             <summary>
             Default constructor for ExchangeRepo.
             </summary>
-            <param name="deliveryContext">Public readonly property on the BaseRepo class.</param>
+            <param name="dataContext">Public readonly property on the BaseRepo class.</param>
         </member>
         <member name="M:StockExchange.DAL.Repos.ExchangeRepo.GetAll">
             <summary>
@@ -333,7 +338,7 @@
             <param name="id"></param>
             <returns>Returns a populated eodprice object.</returns>
         </member>
-        <member name="M:StockExchange.DAL.Repos.Interface.IEodPriceRepo.GetByStockExchangeIdAndDate(System.Int32,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+        <member name="M:StockExchange.DAL.Repos.Interface.IEodPriceRepo.GetByStockIdAndDate(System.Int32,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
             <summary>
             Get a list of Eod Price objects by stockSymbolId and a range of dates.
             </summary>

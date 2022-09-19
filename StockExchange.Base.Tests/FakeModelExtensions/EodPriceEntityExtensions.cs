@@ -1,7 +1,7 @@
 ﻿namespace StockExchange.Base.Tests.FakeModelExtensions
 {
-    using System.Collections.Generic;
     using StockExchange.DAL.DataModel;
+    using StockExchange.Domain.Model;
 
     /// <summary>
     /// EodPrice entity extensions class.
@@ -63,6 +63,29 @@
                 Date = new System.DateTime(2019, 3, 13, 2, 14, 21),
                 ClosePrice = 20.14m,
                 StockSymbol = new StockSymbol
+                {
+                    ID = 51,
+                    CompanyName = "Dunder Mifflin Paper Company",
+                    Ticker = new System.DateTime(2017, 3, 4, 5, 6, 7),
+                    IsActive = true,
+                    ExchangeId = 63,
+                },
+                StockSymbolId = 3,
+            };
+        }
+
+        /// <summary>
+        /// Builds a EodPriceModel object.
+        /// </summary>
+        /// <returns>Returns a mock EodPriceModel object.</returns>
+        public static EodPriceModel BuildDomainModel()
+        {
+            return new EodPriceModel
+            {
+                ID = 31,
+                Date = new System.DateTime(2019, 3, 13, 2, 14, 21),
+                ClosePrice = 20.14m,
+                StockSymbolModel = new StockSymbolModel
                 {
                     ID = 51,
                     CompanyName = "Dunder Mifflin Paper Company",

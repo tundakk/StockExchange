@@ -15,10 +15,48 @@
             Return  Logger Mock for each test.
             </summary>
         </member>
-        <member name="T:StockExchange.DAL.Tests.StockSymbolRepoTest">
+        <member name="T:StockExchange.DAL.Tests.EodPriceRepoTests">
             <summary>
-            SockSymbolRepo tests.
+            EodPrice repository tests.
             </summary>
+        </member>
+        <member name="M:StockExchange.DAL.Tests.EodPriceRepoTests.Setup">
+            <summary>
+            Setup to be ran before every test.
+            </summary>
+        </member>
+        <member name="M:StockExchange.DAL.Tests.EodPriceRepoTests.GetById_WithValidId_ThrowsException">
+            <summary>
+            Test - Get by ID with valid instance id. Throws exception.
+            </summary>
+        </member>
+        <member name="M:StockExchange.DAL.Tests.EodPriceRepoTests.GetById_WithValidId_ShouldReturnEodPriceEntity">
+            <summary>
+            Test - Get by ID with valid instance id.
+            </summary>
+        </member>
+        <member name="T:StockExchange.DAL.Tests.ExchangeRepoTests">
+            <summary>
+            Exchange repository tests.
+            </summary>
+        </member>
+        <member name="T:StockExchange.DAL.Tests.StockSymbolRepoTests">
+            <summary>
+            StockSymbol repository tests.
+            </summary>
+        </member>
+        <member name="T:StockExchange.DAL.Helpers.RepoTestHelper">
+            <summary>
+            Helper for writing repository tests.
+            </summary>
+        </member>
+        <member name="M:StockExchange.DAL.Helpers.RepoTestHelper.GetQueryableMockDbSet``1(System.Collections.Generic.List{``0})">
+            <summary>
+            Create a queryable mock dbSet given a list.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sourceList"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

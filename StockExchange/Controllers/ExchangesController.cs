@@ -33,7 +33,7 @@
         [HttpGet("")]
         public ActionResult<IEnumerable<ExchangeModel>> ListAllExchanges()
         {
-            ServiceResponse<IEnumerable<ExchangeModel>> response = exchangeService.GetAllExchanges();
+            ServiceResponse<IEnumerable<ExchangeModel>> response = exchangeService.GetAll();
 
             if (!response.Success)
             {
@@ -117,7 +117,7 @@
                 return BadRequest();
             }
 
-            ServiceResponse<ExchangeModel> response = exchangeService.DeleteById(id);
+            ServiceResponse<ExchangeModel> response = exchangeService.Delete(id);
 
             if (!response.Success)
             {
@@ -145,7 +145,7 @@
                 return BadRequest();
             }
 
-            ServiceResponse<ExchangeModel> response = exchangeService.UpdateExchange(exchangeModel);
+            ServiceResponse<ExchangeModel> response = exchangeService.Update(exchangeModel);
 
             if (!response.Success)
             {
@@ -173,7 +173,7 @@
                 return BadRequest();
             }
 
-            ServiceResponse<ExchangeModel> response = exchangeService.InsertExchange(exchangeModel);
+            ServiceResponse<ExchangeModel> response = exchangeService.Insert(exchangeModel);
 
             if (!response.Success)
             {

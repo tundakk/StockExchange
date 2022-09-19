@@ -44,7 +44,7 @@
         /// The parent Exchange.
         /// </summary>
         [JsonIgnore]
-        public Exchange? Exchange { get; set; }// 1-n?
+        public Exchange Exchange { get; set; }// 1-n?
 
         /// <summary>
         /// List of EOD prices attached to the StockSymbol object.

@@ -35,7 +35,7 @@
         /// It gets a IEnumerable of all the Exchanges in the system.
         /// </summary>
         /// <returns> Returns a IEnumerable of populated ExchangeModel.</returns>
-        public ServiceResponse<IEnumerable<ExchangeModel>> GetAllExchanges()
+        public ServiceResponse<IEnumerable<ExchangeModel>> GetAll()
         {
             IEnumerable<Exchange> exchanges = exchangeRepo.GetAll();
 
@@ -45,6 +45,15 @@
                 {
                     Success = false,
                     Message = "did not recieve list of exhanges from database",
+                };
+            }
+
+            if (!exchanges.Any())
+            {
+                return new ServiceResponse<IEnumerable<ExchangeModel>>()
+                {
+                    Success = false,
+                    Message = "An empty list was returned",
                 };
             }
 
@@ -70,7 +79,19 @@
                 };
             }
 
-            Exchange? exchange = exchangeRepo.GetById(id);
+            Exchange? exchange;
+            try
+            {
+                exchange = exchangeRepo.GetById(id);
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResponse<ExchangeModel>()
+                {
+                    Success = false,
+                    Message = ex.Message,
+                };
+            }
 
             if (exchange == null)
             {
@@ -103,7 +124,21 @@
                 };
             }
 
-            Exchange? exchange = exchangeRepo.GetByName(name);
+            Exchange? exchange;
+
+            try
+            {
+                exchange = exchangeRepo.GetByName(name);
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResponse<ExchangeModel>()
+                {
+                    Success = false,
+                    Message = ex.Message,
+                };
+            }
+
             if (exchange == null)
             {
                 return new ServiceResponse<ExchangeModel>()
@@ -124,7 +159,7 @@
         /// </summary>
         /// <param name="exchangeModel"></param>
         /// <returns>returns a populated exhange object.</returns>
-        public ServiceResponse<ExchangeModel> InsertExchange(ExchangeModel exchangeModel) //should this return a bool?
+        public ServiceResponse<ExchangeModel> Insert(ExchangeModel exchangeModel) //should this return a bool?
         {
             if (exchangeModel == null)
             {
@@ -162,7 +197,7 @@
         /// </summary>
         /// <param name="exchangeModel"></param>
         /// <returns>Returns the updated ExchangeModel object.</returns>
-        public ServiceResponse<ExchangeModel> UpdateExchange(ExchangeModel exchangeModel)
+        public ServiceResponse<ExchangeModel> Update(ExchangeModel exchangeModel)
         {
             if (exchangeModel == null)
             {
@@ -201,7 +236,7 @@
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Returns the deleted exhange object.</returns>
-        public ServiceResponse<ExchangeModel> DeleteById(int id)
+        public ServiceResponse<ExchangeModel> Delete(int id)
         {
             if (id <= 0)
             {

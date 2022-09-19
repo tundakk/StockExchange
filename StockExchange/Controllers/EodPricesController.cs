@@ -33,7 +33,7 @@
         [HttpGet("")]
         public ActionResult<IEnumerable<EodPriceModel>> ListAllEodPrices()
         {
-            ServiceResponse<IEnumerable<EodPriceModel>> response = eodPriceService.GetAllEodPrices();
+            ServiceResponse<IEnumerable<EodPriceModel>> response = eodPriceService.GetAll();
 
             if (!response.Success)
             {
@@ -131,7 +131,7 @@
                 return BadRequest();
             }
 
-            ServiceResponse<EodPriceModel> response = eodPriceService.DeleteById(id);
+            ServiceResponse<EodPriceModel> response = eodPriceService.Delete(id);
 
             if (!response.Success)
             {
@@ -159,7 +159,7 @@
                 return BadRequest();
             }
 
-            ServiceResponse<EodPriceModel> response = eodPriceService.UpdateEodPrice(eodPriceModel);
+            ServiceResponse<EodPriceModel> response = eodPriceService.Update(eodPriceModel);
 
             if (!response.Success)
             {
@@ -187,7 +187,7 @@
                 return BadRequest();
             }
 
-            ServiceResponse<EodPriceModel> response = eodPriceService.InsertEodPrice(eodPriceModel);
+            ServiceResponse<EodPriceModel> response = eodPriceService.Insert(eodPriceModel);
 
             if (!response.Success)
             {

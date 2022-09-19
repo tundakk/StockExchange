@@ -47,7 +47,19 @@
                 };
             }
 
-            StockSymbol? stockSymbol = stockSymbolsRepo.GetById(id);
+            StockSymbol? stockSymbol;
+            try
+            {
+                stockSymbol = stockSymbolsRepo.GetById(id);
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResponse<StockSymbolModel>()
+                {
+                    Success = false,
+                    Message = ex.Message,
+                };
+            }
 
             if (stockSymbol == null)
             {
@@ -80,7 +92,20 @@
                 };
             }
 
-            StockSymbol? stockSymbol = stockSymbolsRepo.GetByName(name);
+            StockSymbol stockSymbol;
+
+            try
+            {
+                stockSymbol = stockSymbolsRepo.GetByName(name);
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResponse<StockSymbolModel>()
+                {
+                    Success = false,
+                    Message = ex.Message,
+                };
+            }
 
             if (stockSymbol == null)
             {
@@ -101,7 +126,7 @@
         /// It gets a IEnumerable of all the StockSymbolModel in the system.
         /// </summary>
         /// <returns> Returns an IEnumerable of populated StockSymbolModel.</returns>
-        public ServiceResponse<IEnumerable<StockSymbolModel>> GetAllStockSymbols()
+        public ServiceResponse<IEnumerable<StockSymbolModel>> GetAll()
         {
             IEnumerable<StockSymbol> stockSymbols = stockSymbolsRepo.GetAll();
 
@@ -114,12 +139,19 @@
                 };
             }
 
+            if (!stockSymbols.Any())
+            {
+                return new ServiceResponse<IEnumerable<StockSymbolModel>>()
+                {
+                    Success = false,
+                    Message = "An empty list was returned",
+                };
+            }
+
             return new ServiceResponse<IEnumerable<StockSymbolModel>>()
             {
                 Data = mapper.Map<IEnumerable<StockSymbolModel>>(stockSymbols),
             };
-
-            // ICollection and lists. im doing something wrong i think
         }
 
         // POST
@@ -129,7 +161,7 @@
         /// </summary>
         /// <param name="stockSymbolModel"></param>
         /// <returns>returns a populated StockSymbolModel object.</returns>
-        public ServiceResponse<StockSymbolModel> InsertStockSymbol(StockSymbolModel stockSymbolModel)
+        public ServiceResponse<StockSymbolModel> Insert(StockSymbolModel stockSymbolModel)
         {
             if (stockSymbolModel == null)
             {
@@ -168,14 +200,14 @@
         /// </summary>
         /// <param name="stockSymbolModel"></param>
         /// <returns>Returns the updated StockSymbolModel object.</returns>
-        public ServiceResponse<StockSymbolModel> UpdateStockSymbol(StockSymbolModel stockSymbolModel)
+        public ServiceResponse<StockSymbolModel> Update(StockSymbolModel stockSymbolModel)
         {
             if (stockSymbolModel == null)
             {
                 return new ServiceResponse<StockSymbolModel>()
                 {
                     Success = false,
-                    Message = "The stockSymbolModel input cannot be null",
+                    Message = "The stockSymbolModel input cannot be null.",
                 };
             }
 
@@ -186,7 +218,7 @@
                 return new ServiceResponse<StockSymbolModel>()
                 {
                     Success = false,
-                    Message = "The stocksymbol could not be updated",
+                    Message = "The stocksymbol could not be updated.",
                 };
             }
 
@@ -207,14 +239,14 @@
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Returns the deleted StockSymbolModel object.</returns>
-        public ServiceResponse<StockSymbolModel> DeleteById(int id)
+        public ServiceResponse<StockSymbolModel> Delete(int id)
         {
             if (id <= 0)
             {
                 return new ServiceResponse<StockSymbolModel>()
                 {
                     Success = false,
-                    Message = "The id cannot be 0 or less",
+                    Message = "The id cannot be 0 or less.",
                 };
             }
 
@@ -225,7 +257,7 @@
                 return new ServiceResponse<StockSymbolModel>()
                 {
                     Success = false,
-                    Message = "The stocksymbol could not be deleted",
+                    Message = "The stocksymbol could not be deleted.",
                 };
             }
 
@@ -250,18 +282,40 @@
                 return new ServiceResponse<IEnumerable<StockSymbolModel>>()
                 {
                     Success = false,
-                    Message = "The exchangeId cannot be 0 or less",
+                    Message = "The exchangeId cannot be 0 or less.",
                 };
             }
 
-            IEnumerable<StockSymbol> stockSymbols = stockSymbolsRepo.GetListOfStockByExchangeId(exchangeId);
+            IEnumerable<StockSymbol> stockSymbols;
+
+            try
+            {
+                stockSymbols = stockSymbolsRepo.GetListOfStockByExchangeId(exchangeId);
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResponse<IEnumerable<StockSymbolModel>>()
+                {
+                    Success = false,
+                    Message = ex.Message,
+                };
+            }
 
             if (stockSymbols == null)
             {
                 return new ServiceResponse<IEnumerable<StockSymbolModel>>()
                 {
                     Success = false,
-                    Message = $"Could not create a list of StockSymbols with an ExchangeId of: {exchangeId}",
+                    Message = $"Could not create a list of StockSymbols with an ExchangeId of: {exchangeId}.",
+                };
+            }
+
+            if (!stockSymbols.Any())
+            {
+                return new ServiceResponse<IEnumerable<StockSymbolModel>>()
+                {
+                    Success = false,
+                    Message = "Database returned an empty list.",
                 };
             }
 

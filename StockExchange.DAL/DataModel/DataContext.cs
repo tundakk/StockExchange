@@ -17,6 +17,13 @@
         }
 
         /// <summary>
+        /// test constructor. Im unsure if this breaks anything. created because moq is not good with literal classes. it wants an empty constructor implemented.
+        /// </summary>
+        public DataContext()
+        {
+        }
+
+        /// <summary>
         /// dataseeding. On model creation it seeds 3 rows in every table.
         /// </summary>
         /// <param name="modelBuilder"></param>
@@ -94,17 +101,17 @@
         /// <summary>
         /// creates a table and relation for Exchanges.
         /// </summary>
-        public DbSet<Exchange> Exchanges => Set<Exchange>();
+        public virtual DbSet<Exchange> Exchanges => Set<Exchange>();
 
         /// <summary>
         /// creates a table and relation for StockSymbols.
         /// </summary>
-        public DbSet<StockSymbol> StockSymbols => Set<StockSymbol>();
+        public virtual DbSet<StockSymbol> StockSymbols => Set<StockSymbol>();
 
         /// <summary>
         /// creates a table and relation for EodPrices.
         /// </summary>
-        public DbSet<EodPrice> EodPrices => Set<EodPrice>();
+        public virtual DbSet<EodPrice> EodPrices => Set<EodPrice>();
 
         /// <summary>
         /// Sets database state to the modified state.

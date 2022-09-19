@@ -14,7 +14,7 @@
         /// It gets a list of all the StockSymbols in the system.
         /// </summary>
         /// <returns>Returns a list of populated StockSymbolModel.</returns>
-        ServiceResponse<IEnumerable<StockSymbolModel>> GetAllStockSymbols();
+        ServiceResponse<IEnumerable<StockSymbolModel>> GetAll();
 
         /// <summary>
         /// It gets a particular StockSymbolModel object available in the system.
@@ -44,7 +44,7 @@
         /// </summary>
         /// <param name="stockSymbolModel"></param>
         /// <returns>Returns a populated StockSymbolModel object.</returns>
-        ServiceResponse<StockSymbolModel> UpdateStockSymbol(StockSymbolModel stockSymbolModel);
+        ServiceResponse<StockSymbolModel> Update(StockSymbolModel stockSymbolModel);
 
         // POST
 
@@ -53,7 +53,7 @@
         /// </summary>
         /// <param name="stockSymbolModel"></param>
         /// <returns>Returns a populated StockSymbolModel object.</returns>
-        ServiceResponse<StockSymbolModel> InsertStockSymbol(StockSymbolModel stockSymbolModel);
+        ServiceResponse<StockSymbolModel> Insert(StockSymbolModel stockSymbolModel);
         // DELETE
 
         /// <summary>
@@ -61,6 +61,6 @@
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Returns a populated StockSymbolModel object matching the deleted entity.</returns>
-        ServiceResponse<StockSymbolModel> DeleteById(int id);
+        ServiceResponse<StockSymbolModel> Delete(int id);
     }
 }

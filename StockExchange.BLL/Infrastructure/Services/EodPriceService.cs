@@ -36,7 +36,7 @@
         /// It gets a IEnumerable of all the EodPriceModel in the system.
         /// </summary>
         /// <returns> Returns an IEnumerable of populated EodPriceModel.</returns>
-        public ServiceResponse<IEnumerable<EodPriceModel>> GetAllEodPrices()
+        public ServiceResponse<IEnumerable<EodPriceModel>> GetAll()
         {
             IEnumerable<EodPrice> eodPrice = eodPriceRepo.GetAll();
 
@@ -46,6 +46,15 @@
                 {
                     Success = false,
                     Message = "No data from database",
+                };
+            }
+
+            if (!eodPrice.Any())
+            {
+                return new ServiceResponse<IEnumerable<EodPriceModel>>()
+                {
+                    Success = false,
+                    Message = "An empty list was returned",
                 };
             }
 
@@ -71,7 +80,19 @@
                 };
             }
 
-            EodPrice? eodPrice = eodPriceRepo.GetById(id);
+            EodPrice eodPrice;
+            try
+            {
+                eodPrice = eodPriceRepo.GetById(id);
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResponse<EodPriceModel>()
+                {
+                    Success = false,
+                    Message = ex.Message,
+                };
+            }
 
             if (eodPrice == null)
             {
@@ -124,7 +145,20 @@
                 };
             }
 
-            IEnumerable<EodPrice> eodPrices = eodPriceRepo.GetByStockExchangeIdAndDate(stockId, from, to);
+            IEnumerable<EodPrice> eodPrices;
+
+            try
+            {
+                eodPrices = eodPriceRepo.GetByStockIdAndDate(stockId, from, to);
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResponse<IEnumerable<EodPriceModel>>()
+                {
+                    Success = false,
+                    Message = ex.Message,
+                };
+            }
 
             if (eodPrices == null)
             {
@@ -135,7 +169,7 @@
                 };
             }
 
-            if (eodPrices.Count() == 0)
+            if (!eodPrices.Any())
             {
                 return new ServiceResponse<IEnumerable<EodPriceModel>>()
                 {
@@ -157,7 +191,7 @@
         /// </summary>
         /// <param name="eodPriceModel"></param>
         /// <returns>returns a populated EodPriceModel object.</returns>
-        public ServiceResponse<EodPriceModel> InsertEodPrice(EodPriceModel eodPriceModel) // should this return a bool?
+        public ServiceResponse<EodPriceModel> Insert(EodPriceModel eodPriceModel) // should this return a bool?
         {
             if (eodPriceModel == null)
             {
@@ -168,7 +202,21 @@
                 };
             }
 
-            EodPrice eodPrice = mapper.Map<EodPrice>(eodPriceModel);
+            EodPrice eodPrice;
+
+            try
+            {
+                eodPrice = mapper.Map<EodPrice>(eodPriceModel);
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResponse<EodPriceModel>()
+                {
+                    Success = false,
+                    Message = ex.Message,
+                };
+            }
+
             if (eodPrice == null)
             {
                 return new ServiceResponse<EodPriceModel>()
@@ -195,7 +243,7 @@
         /// </summary>
         /// <param name="eodPriceModel"></param>
         /// <returns>Returns the update EodPriceModel object.</returns>
-        public ServiceResponse<EodPriceModel> UpdateEodPrice(EodPriceModel eodPriceModel)
+        public ServiceResponse<EodPriceModel> Update(EodPriceModel eodPriceModel)
         {
             if (eodPriceModel == null)
             {
@@ -234,7 +282,7 @@
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Returns the deleted EodPriceModel object.</returns>
-        public ServiceResponse<EodPriceModel> DeleteById(int id)
+        public ServiceResponse<EodPriceModel> Delete(int id)
         {
             if (id <= 0)
             {
@@ -245,7 +293,20 @@
                 };
             }
 
-            EodPrice? eodPrice = eodPriceRepo.GetById(id);
+            EodPrice? eodPrice;
+
+            try
+            {
+                eodPrice = eodPriceRepo.GetById(id);
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResponse<EodPriceModel>()
+                {
+                    Success = false,
+                    Message = ex.Message,
+                };
+            }
 
             if (eodPrice == null)
             {

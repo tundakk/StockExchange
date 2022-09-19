@@ -13,8 +13,8 @@
         /// <summary>
         /// Default constructor for ExchangeRepo.
         /// </summary>
-        /// <param name="deliveryContext">Public readonly property on the BaseRepo class.</param>
-        public ExchangeRepo(DataContext deliveryContext) : base(deliveryContext)
+        /// <param name="dataContext">Public readonly property on the BaseRepo class.</param>
+        public ExchangeRepo(DataContext dataContext) : base(dataContext)
         {
         }
 
@@ -26,7 +26,7 @@
         /// <returns>returns a populated list of type Exchange, of all entities in the database.</returns>
         public override IQueryable<Exchange> GetAll()
         {
-            return DeliveryContext.Exchanges; //does this return a list of Exhange objects?
+            return DataContext.Exchanges; //does this return a list of Exhange objects?
         }
 
         /// <summary>
@@ -35,14 +35,14 @@
         /// <param name="id"></param>
         /// <returns>Returns a populated exchange object by matching ID.</returns>
         /// <exception cref="ArgumentException"></exception>
-        public Exchange? GetById(int id)
+        public Exchange GetById(int id)
         {
             if (id <= 0)
             {
                 throw new ArgumentException("GetById - ID must be greater than 0");
             }
 
-            return DeliveryContext.Exchanges.Find(id);
+            return DataContext.Exchanges.Find(id);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@
         /// <param name="name"></param>
         /// <returns>a populated exchange object.</returns>
         /// <exception cref="ArgumentException"></exception>
-        public Exchange? GetByName(string name)
+        public Exchange GetByName(string name)
         {
             if (string.IsNullOrEmpty(name))
             {
@@ -78,7 +78,7 @@
                 throw new ArgumentException("Insert - Exchange must not be null");
             }
 
-            DeliveryContext.Exchanges.Add(entity);
+            DataContext.Exchanges.Add(entity);
             return entity;
         }
 
@@ -97,7 +97,7 @@
                 throw new ArgumentException("Delete - Exchange must not be null");
             }
 
-            DeliveryContext.Exchanges.Remove(entity);
+            DataContext.Exchanges.Remove(entity);
             return entity;
         }
     }

@@ -4,17 +4,6 @@
         <name>StockExchange.Base.Tests</name>
     </assembly>
     <members>
-        <member name="T:StockExchange.Base.Tests.BaseTest`1">
-            <summary>
-            BaseTest.
-            </summary>
-            <typeparam name="T"></typeparam>
-        </member>
-        <member name="P:StockExchange.Base.Tests.BaseTest`1.LoggerMock">
-            <summary>
-            Return  Logger Mock for each test.
-            </summary>
-        </member>
         <member name="T:StockExchange.Base.Tests.FakeModelExtensions.EodPriceEntityExtensions">
             <summary>
             EodPrice entity extensions class.
@@ -32,6 +21,12 @@
             </summary>
             <returns>Returns a mock EodPrice object.</returns>
         </member>
+        <member name="M:StockExchange.Base.Tests.FakeModelExtensions.EodPriceEntityExtensions.BuildDomainModel">
+            <summary>
+            Builds a EodPriceModel object.
+            </summary>
+            <returns>Returns a mock EodPriceModel object.</returns>
+        </member>
         <member name="T:StockExchange.Base.Tests.FakeModelExtensions.ExchangeEntityExtensions">
             <summary>
             Exchange entity extensions class.
@@ -45,9 +40,15 @@
         </member>
         <member name="M:StockExchange.Base.Tests.FakeModelExtensions.ExchangeEntityExtensions.Build">
             <summary>
-            Builds a Exchange object.
+            Builds an Exchange object.
             </summary>
             <returns>Returns a mock Exchange object.</returns>
+        </member>
+        <member name="M:StockExchange.Base.Tests.FakeModelExtensions.ExchangeEntityExtensions.BuildDomainModel">
+            <summary>
+            Builds an ExchangeModel object.
+            </summary>
+            <returns>Returns a mock ExchangeModel object.</returns>
         </member>
         <member name="T:StockExchange.Base.Tests.FakeModelExtensions.StockSymbolEntityExtensions">
             <summary>
@@ -65,6 +66,12 @@
             Builds a StockSymbol object.
             </summary>
             <returns>Returns a mock StockSymbol object.</returns>
+        </member>
+        <member name="M:StockExchange.Base.Tests.FakeModelExtensions.StockSymbolEntityExtensions.BuildDomainModel">
+            <summary>
+            Builds an StockSymbolModel object.
+            </summary>
+            <returns>Returns a mock StockSymbolModel object.</returns>
         </member>
     </members>
 </doc>

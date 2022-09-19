@@ -19,5 +19,350 @@
             Test with valid instance id.
             </summary>
         </member>
+        <member name="M:StockExchange.BLL.Tests.EodPriceServiceTests.GetById_WithValidEodPriceID_ShouldReturnDataNull">
+            <summary>
+            Test with no existing instance id.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.EodPriceServiceTests.GetById_WithValidEodPriceID_ShouldReturnException">
+            <summary>
+            Test with no existing instance id.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.EodPriceServiceTests.GetById_WithInvalidEodPriceID_ShouldReturnSuccessFalse">
+            <summary>
+            test with invalid instance ID.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.EodPriceServiceTests.GetAll_WithNoDataFromDatabase_ShouldReturnSuccessFalse">
+            <summary>
+            test get all that returns null.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.EodPriceServiceTests.GetAll_WithValidData_ShouldReturnSuccessFalse">
+            <summary>
+            test get all that returns an empty array.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.EodPriceServiceTests.GetAll_WithValidData_ShouldReturnSuccessTrue">
+            <summary>
+            test get all that returns all valid entities.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.EodPriceServiceTests.GetEods_ByDateWithValidStockId_ShouldReturnSuccessTrue">
+            <summary>
+            Test with valid StockSymbol id.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.EodPriceServiceTests.GetEods_ByDateWithValidStockId_ShouldReturnDataNull">
+            <summary>
+            Test with valid stocksymbolid and no entities found.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.EodPriceServiceTests.GetEods_ByDateWithValidStockId_ShouldReturnException">
+            <summary>
+            Test with no existing instance id.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.EodPriceServiceTests.GetEods_ByDateWithInvalidStockId_ShouldReturnSuccessFalse">
+            <summary>
+            test with invalid stocksymbol ID.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.EodPriceServiceTests.GetEods_ByDateWithInvalidDates_ShouldReturnSuccessFalse">
+            <summary>
+            test with invalid dates.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.EodPriceServiceTests.Create_WithInvalidObject_ShouldReturnDataNull">
+            <summary>
+            test creating an entity which repo returns null.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.EodPriceServiceTests.Create_WithValidObject_ShouldReturnData">
+            <summary>
+            test creating a valid entity where the repo returns the entity.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.EodPriceServiceTests.Create_WithInvalidObject_ShouldReturnSuccessFalse">
+            <summary>
+            test creating an null entity where the repo returns ServiceResponse .Success set to false.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.EodPriceServiceTests.Update_WithInvalidObject_ShouldReturnDataNull">
+            <summary>
+            test updating with invalid entity where repo returns null.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.EodPriceServiceTests.Update_WithValidObject_ShouldReturnData">
+            <summary>
+            test updating a valid entity where the repo returns the entity.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.EodPriceServiceTests.Update_WithInvalidObject_ShouldReturnSuccessFalse">
+            <summary>
+            test updating an null entity where the repo returns ServiceResponse .Success set to false.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.EodPriceServiceTests.Delete_WithValidId_ShouldReturnDataNull">
+            <summary>
+            test deleting with invalid id where repo returns null.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.EodPriceServiceTests.Delete_WithValidId_ShouldReturnData">
+            <summary>
+            test deleting a valid entity where the repo returns the entity.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.EodPriceServiceTests.Delete_WithInvalidId_ShouldReturnSuccessFalse">
+            <summary>
+            test deleting an entity where the id is invalid. Returns ServiceResponse .Success set to false.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.EodPriceServiceTests.Delete_WithValidId_ShouldReturnSuccessFalse">
+            <summary>
+            test deleting an null entity where Id is valid but the repo returns null.
+            </summary>
+        </member>
+        <member name="T:StockExchange.BLL.Tests.ExchangeServiceTests">
+            <summary>
+            Tests for ExchangeService.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.ExchangeServiceTests.Setup">
+            <summary>
+            Setup.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.ExchangeServiceTests.GetById_WithValidExchangeID_ShouldReturnSuccessTrue">
+            <summary>
+            Test with valid instance id.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.ExchangeServiceTests.GetById_WithInvalidExchangeID_ShouldReturnDataNull">
+            <summary>
+            Test with no existing instance id.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.ExchangeServiceTests.GetById_WithValidExchangeID_ShouldReturnException">
+            <summary>
+            Test with no existing instance id.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.ExchangeServiceTests.GetById_WithInvalidExchangeID_ShouldReturnSuccessFalse">
+            <summary>
+            test with invalid instance ID.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.ExchangeServiceTests.GetAll_WithNoDataFromDatabase_ShouldReturnSuccessFalse">
+            <summary>
+            test get all that returns null.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.ExchangeServiceTests.GetAll_WithValidData_ShouldReturnSuccessFalse">
+            <summary>
+            test get all that returns an empty array.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.ExchangeServiceTests.GetAll_WithValidData_ShouldReturnSuccessTrue">
+            <summary>
+            test get all that returns all valid entities.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.ExchangeServiceTests.GetByName_WithValidName_ShouldReturnSuccessTrue">
+            <summary>
+            Test with valid instance name.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.ExchangeServiceTests.GetByName_WithInvalidName_ShouldReturnDataNull">
+            <summary>
+            Test with none existing instance name.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.ExchangeServiceTests.GetByName_WithValidName_ShouldReturnException">
+            <summary>
+            Test with none existing instance name.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.ExchangeServiceTests.Create_WithInvalidObject_ShouldReturnDataNull">
+            <summary>
+            test creating an entity which repo returns null.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.ExchangeServiceTests.Create_WithValidObject_ShouldReturnData">
+            <summary>
+            test creating a valid entity where the repo returns the entity.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.ExchangeServiceTests.Create_WithInvalidObject_ShouldReturnSuccessFalse">
+            <summary>
+            test creating an null entity where the repo returns ServiceResponse .Success set to false.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.ExchangeServiceTests.Update_WithInvalidObject_ShouldReturnDataNull">
+            <summary>
+            test updating with invalid entity where repo returns null.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.ExchangeServiceTests.Update_WithValidObject_ShouldReturnData">
+            <summary>
+            test updating a valid entity where the repo returns the entity.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.ExchangeServiceTests.Update_WithInvalidObject_ShouldReturnSuccessFalse">
+            <summary>
+            test updating an null entity where the repo returns ServiceResponse .Success set to false.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.ExchangeServiceTests.Delete_WithValidId_ShouldReturnDataNull">
+            <summary>
+            test deleting with invalid id where repo returns null.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.ExchangeServiceTests.Delete_WithValidId_ShouldReturnData">
+            <summary>
+            test deleting a valid entity where the repo returns the entity.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.ExchangeServiceTests.Delete_WithInvalidId_ShouldReturnSuccessFalse">
+            <summary>
+            test deleting an entity where the id is invalid. Returns ServiceResponse .Success set to false.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.ExchangeServiceTests.Delete_WithValidId_ShouldReturnSuccessFalse">
+            <summary>
+            test deleting an null entity where Id is valid but the repo returns null.
+            </summary>
+        </member>
+        <member name="T:StockExchange.BLL.Tests.StockSymbolServiceTests">
+            <summary>
+            Tests for StockSymbol Service.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.Setup">
+            <summary>
+            Setup.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.GetById_WithValidStockSymbolID_ShouldReturnSuccessTrue">
+            <summary>
+            Test with valid instance id.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.GetById_WithValidStockSymbolID_ShouldReturnDataNull">
+            <summary>
+            Test with no existing instance id.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.GetById_WithValidStockSymbolID_ShouldReturnException">
+            <summary>
+            Test with no existing instance id.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.GetById_WithInvalidStockSymbolID_ShouldReturnSuccessFalse">
+            <summary>
+            test with invalid instance ID.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.GetById_WithValidExchangeID_ShouldReturnSuccessTrue">
+            <summary>
+            Test with valid exchangeId.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.GetById_WithValidExchangeID_ShouldReturnDataNull">
+            <summary>
+            Test with none existing object but valid exchangeId.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.GetById_WithValidExchangeID_ShouldReturnException">
+            <summary>
+            Test with no existing instance id.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.GetById_WithInvalidExchangeID_ShouldReturnSuccessFalse">
+            <summary>
+            test with invalid instance ID.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.GetByName_WithValidName_ShouldReturnSuccessTrue">
+            <summary>
+            Test with valid instance name.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.GetByName_WithInvalidName_ShouldReturnDataNull">
+            <summary>
+            Test with none existing instance name.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.GetByName_WithValidName_ShouldReturnException">
+            <summary>
+            Test with none existing instance name.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.GetAll_WithNoDataFromDatabase_ShouldReturnSuccessFalse">
+            <summary>
+            test get all that returns null.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.GetAll_WithValidData_ShouldReturnSuccessFalse">
+            <summary>
+            test get all that returns an empty array.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.GetAll_WithValidData_ShouldReturnSuccessTrue">
+            <summary>
+            test get all that returns all valid entities.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.Create_WithInvalidObject_ShouldReturnDataNull">
+            <summary>
+            test creating an entity which repo returns null.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.Create_WithValidObject_ShouldReturnData">
+            <summary>
+            test creating a valid entity where the repo returns the entity.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.Create_WithInvalidObject_ShouldReturnSuccessFalse">
+            <summary>
+            test creating an null entity where the repo returns ServiceResponse .Success set to false.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.Update_WithInvalidObject_ShouldReturnDataNull">
+            <summary>
+            test updating with invalid entity where repo returns null.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.Update_WithValidObject_ShouldReturnData">
+            <summary>
+            test updating a valid entity where the repo returns the entity.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.Update_WithInvalidObject_ShouldReturnSuccessFalse">
+            <summary>
+            test updating an null entity where the repo returns ServiceResponse .Success set to false.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.Delete_WithValidId_ShouldReturnDataNull">
+            <summary>
+            test deleting with invalid id where repo returns null.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.Delete_WithValidId_ShouldReturnData">
+            <summary>
+            test deleting a valid entity where the repo returns the entity.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.Delete_WithInvalidId_ShouldReturnSuccessFalse">
+            <summary>
+            test deleting an entity where the id is invalid. Returns ServiceResponse .Success set to false.
+            </summary>
+        </member>
+        <member name="M:StockExchange.BLL.Tests.StockSymbolServiceTests.Delete_WithValidId_ShouldReturnSuccessFalse">
+            <summary>
+            test deleting an null entity where Id is valid but the repo returns null.
+            </summary>
+        </member>
     </members>
 </doc>

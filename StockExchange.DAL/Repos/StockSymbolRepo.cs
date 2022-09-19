@@ -32,7 +32,7 @@
                 throw new ArgumentException("Delete - Exchange must not be null");
             }
 
-            DeliveryContext.StockSymbols.Remove(entity);
+            DataContext.StockSymbols.Remove(entity);
             return entity;
         }
 
@@ -42,7 +42,7 @@
         /// <returns>returns a populated list of type StockSymbol, of all entities in the database.</returns>
         public override IQueryable<StockSymbol> GetAll()
         {
-            return DeliveryContext.StockSymbols;
+            return DataContext.StockSymbols;
         }
 
         /// <summary>
@@ -51,7 +51,7 @@
         /// <param name="name"></param>
         /// <returns>a populated StockSymbol object.</returns>
         /// <exception cref="ArgumentException"></exception>
-        public StockSymbol? GetByName(string name)
+        public StockSymbol GetByName(string name)
         {
             if (string.IsNullOrEmpty(name))
             {
@@ -73,14 +73,14 @@
         /// <param name="id"></param>
         /// <returns>Returns a populated StockSymbol object by matching ID.</returns>
         /// <exception cref="ArgumentException"></exception>
-        public StockSymbol? GetById(int id)
+        public StockSymbol GetById(int id)
         {
             if (id <= 0)
             {
                 throw new ArgumentException("ID must be greater than 0");
             }
 
-            return DeliveryContext.StockSymbols.Find(id);
+            return DataContext.StockSymbols.Find(id);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@
                 throw new ArgumentException("Insert - BlockFragment must not be null");
             }
 
-            DeliveryContext.StockSymbols.Add(entity);
+            DataContext.StockSymbols.Add(entity);
             return entity;
         }
     }
