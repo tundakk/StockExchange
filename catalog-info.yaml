@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: StockExchange
+  annotations:
+    github.com/project-slug: tundakk/StockExchange
+spec:
+  type: other
+  lifecycle: unknown
+  owner: tundakk
